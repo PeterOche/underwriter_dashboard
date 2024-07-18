@@ -56,13 +56,33 @@
       .text-bluewood-800 {
         color: #34475e;
       }
+      .hidden-sidebar {
+        display: none;
+      }
+      @media (max-width: 600px) {
+        .table-container {
+          overflow-x: auto; /* Enables horizontal scrolling */
+        }
+
+        .fix-on-mobile {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 10;
+        }
+
+        table {
+          min-width: 600px; /* Ensures table is wide enough to require scrolling */
+        }
+      }
     </style>
   </head>
-  <body class="bg-white-100">
-    <div class="flex h-screen">
+  <body class="bg-white-100 font-mulish max-w-full">
+    <div class="flex h-screen max-w-full">
       <!-- First Sidebar -->
       <div
-        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10"
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
       >
         <nav
           class="flex flex-col items-center h-full space-y-4 text-white"
@@ -75,11 +95,12 @@
               class="mb-3"
             />
           </a>
-          <a href="#" class="hover:text-yellow-500">
+
+          <a href="#" class="bg-white px-4 py-1 hover:text-yellow-500">
             <img
               src="../assets/vectors/calender.png"
               alt="calender"
-              class="mb-3 w-4 md:w-4 lg:w-6"
+              class="mb-1 w-4 md:w-4 lg:w-6"
             />
           </a>
           <a href="#" class="hover:text-yellow-500">
@@ -112,7 +133,7 @@
       <!-- Second Sidebar -->
       <div
         id="secondSidebar"
-        class="fixed top-0 left-16 md:left-16 lg:left-16 w-48 h-full bg-white shadow-md z-10 second-sidebar"
+        class="fixed top-0 mt-10 lg:mt-0 left-12 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 hidden lg:block second-sidebar"
       >
         <div class="p-4">
           <img
@@ -125,42 +146,48 @@
           <h2>TRM</h2>
           <a
             href="./dashboard.html"
-            class="flex items-center text-gray-700 hover:text-yellow-500"
+            class="flex items-center hover:text-yellow-500"
           >
             <img
               src="../assets/vectors/Group 126.svg"
               alt="Overview"
               class="w-4 md:w-4 lg:w-6"
             />
-            <span class="ml-2">Overview</span>
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
           </a>
           <a
             href="inspection_page.html"
-            class="flex items-center text-gray-700 hover:text-yellow-500"
+            class="flex items-center text-yellow-500"
           >
             <img src="../assets/vectors/group127.svg" alt="request" />
-            <span class="ml-2">Requests</span>
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
           </a>
         </nav>
       </div>
 
       <!-- Main Content -->
-      <div class="flex-1 ml-64 p-6">
+      <div class="flex-1 h-full w-full lg:ml-64">
         <!-- Header -->
         <div
-          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 pr-10 py-2"
+          class="fix-on-mobile flex justify-between lg:justify-end items-center border-b border-gray-300 bg-white p-4"
         >
-          <img
-            src="../assets/vectors/notif.svg"
-            alt="notif"
-            class="text-gray-600 text-xl"
-          />
-          <img
-            src="../assets/vectors/Group 38.jpg"
-            alt="Profile"
-            class="w-10 h-10 rounded-full"
-          />
-          <span class="text-gray-600">Adesola</span>
+          <button id="toggleSidebar" class="lg:hidden p-2 z-20">
+            <i class="fas fa-bars text-yellow-600"></i>
+          </button>
+
+          <div class="mr-4 md:mr-0 flex items-center space-x-4">
+            <img
+              src="../assets/vectors/notif.svg"
+              alt="notif"
+              class="text-gray-600 text-xl"
+            />
+            <img
+              src="../assets/vectors/Group 38.jpg"
+              alt="Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            <span class="text-gray-600 hidden lg:block">Adesola</span>
+          </div>
         </div>
 
         <!-- Main Content Area -->
@@ -179,10 +206,10 @@
           </div>
           <!-- Top Card -->
           <div
-            class="grid grid-cols-4 gap-2 bg-white shadow hover:shadow-lg border rounded-lg py-8 pr-8 mb-6"
+            class="flex-col md:grid md:grid-cols-4 gap-2 bg-white shadow hover:shadow-lg border rounded-lg py-8 md:pr-8 mb-6"
           >
             <!-- Left section with image and list -->
-            <div class="flex flex-col justify-center items-center">
+            <div class="flex flex-col md:justify-center items-center">
               <img
                 src="../assets/building.png"
                 alt="Building"
@@ -196,11 +223,15 @@
             </div>
 
             <!-- Middle section with property details -->
-            <div class="col-span-2 flex flex-col justify-center">
+            <div
+              class="md:col-span-2 flex flex-col justify-between md:justify-center items-center"
+            >
               <h2 class="text-lg font-semibold mb-10 text-bluewood-800">
                 Rovenheights Properties LTD.
               </h2>
-              <div class="grid grid-cols-3 gap-x-4 gap-y-2 text-sm">
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 text-sm"
+              >
                 <div>
                   <p class="font-thin">Policy Number:</p>
                   <p>ALR12358493</p>
@@ -226,9 +257,9 @@
 
             <!-- Right section with progress circle -->
             <div
-              class="flex flex-col justify-center items-center border-l pl-10"
+              class="flex flex-col justify-center items-center border-l md:pl-10"
             >
-              <p class="text-yellow-600 mb-10">Policy Progress</p>
+              <p class="text-yellow-600 mt-4 mb-4 md:mb-10">Policy Progress</p>
               <img
                 src="../assets/progress.png"
                 alt="Progress"
@@ -250,28 +281,28 @@
 
           <!-- Tabs Section -->
           <div class="border bg-white shadow hover:shadow-lg p-8 rounded">
-            <div class="flex border-b border-gray-300">
+            <div class="flex p-2 border-b border-gray-300">
               <div
-                class="tab p-4 text-gray-700 active"
+                class="tab p-4 text-sm md:text-base text-gray-700 active"
                 onclick="showTab('property-information')"
               >
                 Property Information
               </div>
               <div
-                class="tab p-4 text-gray-700"
+                class="tab p-4 text-sm md:text-base text-gray-700"
                 onclick="showTab('property-description')"
               >
                 Property Description
               </div>
               <div
-                class="tab p-4 text-gray-700"
+                class="tab p-4 text-sm md:text-base text-gray-700"
                 onclick="showTab('supporting-documents')"
               >
                 Supporting Documents
               </div>
             </div>
             <div id="property-information" class="tab-content active p-4">
-              <div class="grid grid-cols-5 grid-rows-2 gap-4">
+              <div class="grid grid-cols-2 md:grid-cols-5 md:grid-rows-2 gap-4">
                 <div>
                   <p class="text-bluewood-800 text-sm font-semibold">
                     Insured for:
@@ -344,7 +375,7 @@
               </div>
 
               <!-- Document Item -->
-              <div class="flex justify-between items-center border-b p-4">
+              <div class="flex justify-between items-center border-b pb-4">
                 <div class="text-gray-800">Police report</div>
                 <div class="flex space-x-4 text-sm text-gray-600">
                   <div>25 Aug, 2022 9:00 AM</div>
@@ -389,6 +420,19 @@
           }
         });
       }
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          const firstSidebar = document.getElementById("firstSidebar");
+          const secondSidebar = document.getElementById("secondSidebar");
+          if (firstSidebar.classList.contains("hidden")) {
+            firstSidebar.classList.remove("hidden");
+            secondSidebar.classList.remove("hidden");
+          } else {
+            firstSidebar.classList.add("hidden");
+            secondSidebar.classList.add("hidden");
+          }
+        });
     </script>
   </body>
 </html>

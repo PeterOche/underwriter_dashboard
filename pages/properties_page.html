@@ -43,13 +43,43 @@
       .circle {
         margin-left: -3px;
       }
+      .hidden-sidebar {
+        display: none;
+      }
+
+      .selected {
+        background-color: #ffffff;
+      }
+
+      @media (max-width: 1400px) {
+        .table-container {
+          overflow-x: auto; /* Enables horizontal scrolling */
+        }
+
+        .fix-on-mobile {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 10;
+        }
+
+        table {
+          min-width: 600px; /* Ensures table is wide enough to require scrolling */
+        }
+      }
+      @media (max-width: 1400px) {
+        .hide-on-mobile {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body class="bg-white-100">
     <div class="flex h-screen">
       <!-- First Sidebar -->
       <div
-        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10"
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
       >
         <nav
           class="flex flex-col items-center h-full space-y-4 text-white"
@@ -62,6 +92,7 @@
               class="mb-3"
             />
           </a>
+
           <a href="#" class="hover:text-yellow-500">
             <img
               src="../assets/vectors/calender.png"
@@ -99,7 +130,7 @@
       <!-- Second Sidebar -->
       <div
         id="secondSidebar"
-        class="fixed top-0 left-16 md:left-16 lg:left-16 w-48 h-full bg-white shadow-md z-10 second-sidebar"
+        class="fixed top-0 mt-10 lg:mt-0 left-12 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 hidden lg:block second-sidebar"
       >
         <div class="p-4">
           <img
@@ -112,212 +143,231 @@
           <h2>TRM</h2>
           <a
             href="./dashboard.html"
-            class="flex items-center text-gray-700 hover:text-yellow-500"
+            class="flex items-center hover:text-yellow-500"
           >
             <img
-              src="../assets/overviewVec.png"
+              src="../assets/vectors/Group 126.svg"
               alt="Overview"
               class="w-4 md:w-4 lg:w-6"
             />
-            <span class="ml-2">Overview</span>
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
           </a>
           <a
             href="inspection_page.html"
             class="flex items-center text-yellow-500"
           >
-            <img src="../assets/requestAct.png" alt="request" />
-            <span class="ml-2">Requests</span>
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
           </a>
         </nav>
       </div>
 
       <!-- Main Content -->
-      <div class="flex-1 ml-64 p-6">
+      <div class="flex-1 h-full w-full lg:ml-64">
         <!-- Header -->
         <div
-          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 pr-10 py-2"
+          class="fix-on-mobile flex justify-between lg:justify-end items-center border-b border-gray-300 bg-white p-4"
         >
-          <img
-            src="../assets/vectors/notif.svg"
-            alt="notif"
-            class="text-gray-600 text-xl"
-          />
-          <img
-            src="../assets/vectors/Group 38.jpg"
-            alt="Profile"
-            class="w-10 h-10 rounded-full"
-          />
-          <span class="text-gray-600">Adesola</span>
+          <button id="toggleSidebar" class="lg:hidden p-2 z-20">
+            <i class="fas fa-bars text-yellow-600"></i>
+          </button>
+
+          <div class="mr-4 md:mr-0 flex items-center space-x-4">
+            <img
+              src="../assets/vectors/notif.svg"
+              alt="notif"
+              class="text-gray-600 text-xl"
+            />
+            <img
+              src="../assets/vectors/Group 38.jpg"
+              alt="Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            <span class="text-gray-600 hidden lg:block">Adesola</span>
+          </div>
         </div>
 
-        <!-- Main Content Area -->
-        <div class="mt-14 p-4">
-          <div class="mt-4 mb-6 pb-10 flex justify-between items-center">
-            <div>
-              <h1
-                class="text-lg text-gray-600 ml-4 md:text-l font-bold lg: text-l"
-              >
-                Rovenheight Properties
-              </h1>
-              <p class="text-gray-600 ml-4">See Inspection request details</p>
-            </div>
-          </div>
-          <div class="flex flex-col md:flex-row">
-            <!-- Left Column -->
-            <div
-              class="flex flex-col justify-around bg-white shadow-lg rounded-lg p-2 w-full md:w-1/4"
-            >
-              <div class="flex flex-col justify-center">
-                <div class="self-center w-22 h-22">
-                  <img
-                    src="../assets/passport.png"
-                    alt="Profile"
-                    class="mb-4"
-                  />
-                </div>
-
-                <h2 class="self-center text-xl font-bold">Goodness Ibeneme</h2>
-                <p class="my-4 font-bold ml-4 text-green-500">
-                  Inspection Status:
-                  <span class="text-yellow-500">ongoing</span>
-                </p>
-              </div>
-
-              <div class="mt-4">
-                <div class="flex flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Claim Number:</p>
-                  <p class="text-sm">ASD12358493</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Policy Number:</p>
-                  <p class="text-sm">MTR12358493</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Commencement Date:</p>
-                  <p class="text-sm">31 May 2022</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Sum Assured (₦):</p>
-                  <p class="text-sm">1,000,000</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Premium (₦):</p>
-                  <p class="text-sm">10,000</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Vehicle Type:</p>
-                  <p class="text-sm">Car</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Policy Term (Years):</p>
-                  <p class="text-sm">5</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Expiry Date:</p>
-
-                  <p class="text-sm">19 Dec, 2024</p>
-                </div>
-                <div class="flex-col justify-between ml-10 my-4">
-                  <p class="text-xs text-gray-400">Damage Type:</p>
-                  <p class="text-sm">Interior (engine)</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Column -->
-
-            <div class="flex-1 md:ml-12 mt-6 md:mt-0">
-              <div class="flex flex-row space-x-8">
-                <div
-                  class="circle rounded-full bg-yellow-600 w-2 h-2 self-center"
-                ></div>
-                <span class="text-sm text-gray-500">25 Jan, 2023 9:23 AM</span>
-              </div>
-
-              <div class="border-l border-gray-400 p-4">
-                <div
-                  class="ml-10 mr-0 border-l-8 border-yellow-600 bg-white shadow hover:shadow-lg rounded-lg p-4 mb-4"
+        <div
+          class="mt-10 md:mt-4 flex flex-col p-2 pt-10 lg:p-10 overflow-auto bg-[#FDFDFD]"
+        >
+          <!-- Main Content Area -->
+          <div class="md:mt-2 p-4">
+            <div class="mt-2 mb-6 pb-10 flex justify-between items-center">
+              <div>
+                <h1
+                  class="text-lg text-gray-600 ml-4 md:text-lg font-bold lg: text-l"
                 >
-                  <div class="flex items-center bg-white rounded-lg">
-                    <div class="flex flex-col justify-between h-full mr-4">
-                      <img
-                        src="../assets/vectors/note.svg"
-                        alt="note"
-                        class="w-6 h-6 mb-auto"
-                      />
-                      <img
-                        src="../assets/vectors/Ellipse 8.svg"
-                        alt="eclipse"
-                        class="w-3 h-3 mt-4 self-center"
-                      />
-                    </div>
-                    <div class="flex flex-col flex-grow">
-                      <span class="text-sm whitespace-nowrap">
-                        You created request for Post Loss Inspection
-                      </span>
-                      <span class="text-xs text-yellow-600"
-                        >Leadway Assurance</span
-                      >
-                      <span class="text-xs text-gray-500 mt-2"
-                        >Documents reviewed</span
-                      >
-                    </div>
-                    <div>
-                      <button
-                        id="viewRequestBtn"
-                        class="button whitespace-nowrap bg-orange-500 text-white px-4 py-2 rounded-lg"
-                      >
-                        View request
-                      </button>
-                    </div>
+                  Rovenheight Properties
+                </h1>
+                <p class="text-gray-600 ml-4">See Inspection request details</p>
+              </div>
+            </div>
+            <div class="flex flex-col lg:flex-row">
+              <!-- Left Column -->
+              <div
+                class="flex self-center lg:self-start flex-col justify-around bg-white shadow-lg rounded-lg p-2 w-full md:w-1/2 lg:w-1/4"
+              >
+                <div class="flex flex-col justify-center">
+                  <div class="self-center w-22 h-22">
+                    <img
+                      src="../assets/passport.png"
+                      alt="Profile"
+                      class="mb-4"
+                    />
+                  </div>
+
+                  <h2 class="self-center text-xl font-bold">
+                    Goodness Ibeneme
+                  </h2>
+                  <p class="my-4 font-bold ml-4 text-green-500">
+                    Inspection Status:
+                    <span class="text-yellow-500">ongoing</span>
+                  </p>
+                </div>
+
+                <div class="mt-4">
+                  <div class="flex flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Claim Number:</p>
+                    <p class="text-sm">ASD12358493</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Policy Number:</p>
+                    <p class="text-sm">MTR12358493</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Commencement Date:</p>
+                    <p class="text-sm">31 May 2022</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Sum Assured (₦):</p>
+                    <p class="text-sm">1,000,000</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Premium (₦):</p>
+                    <p class="text-sm">10,000</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Vehicle Type:</p>
+                    <p class="text-sm">Car</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Policy Term (Years):</p>
+                    <p class="text-sm">5</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Expiry Date:</p>
+
+                    <p class="text-sm">19 Dec, 2024</p>
+                  </div>
+                  <div class="flex-col justify-between ml-10 my-4">
+                    <p class="text-xs text-gray-400">Damage Type:</p>
+                    <p class="text-sm">Interior (engine)</p>
                   </div>
                 </div>
               </div>
-              <div class="flex flex-row space-x-8">
-                <div
-                  class="circle rounded-full bg-yellow-600 w-2 h-2 self-center my-2"
-                ></div>
-                <div>
+
+              <!-- Right Column -->
+
+              <div class="flex-1 lg:ml-12 mt-6 md:mt-0">
+                <div class="flex flex-row space-x-8">
+                  <div
+                    class="circle rounded-full bg-yellow-600 w-2 h-2 self-center"
+                  ></div>
                   <span class="text-sm text-gray-500"
-                    >24 Jan, 2023 5:00 PM</span
+                    >25 Jan, 2023 9:23 AM</span
                   >
                 </div>
-              </div>
 
-              <div class="border-l border-gray-400 p-4">
-                <div
-                  class="mr-4 border-l-8 border-gray-500 bg-white shadow hover:shadow-lg rounded-lg p-4"
-                >
-                  <div class="flex items-center bg-white rounded-lg">
-                    <div class="flex flex-col justify-between h-full mr-4">
-                      <img
-                        src="../assets/vectors/note.svg"
-                        alt="note"
-                        class="w-6 h-6 mb-auto"
-                      />
-                      <img
-                        src="../assets/vectors/Ellipse 10.svg"
-                        alt="eclipse"
-                        class="w-3 h-3 mt-4 self-center"
-                      />
+                <div class="border-l border-gray-400 p-4">
+                  <div
+                    class="md:ml-10 mr-0 border-l-8 border-yellow-600 bg-white shadow hover:shadow-lg rounded-lg p-4 mb-4"
+                  >
+                    <div
+                      class="flex items-center bg-white rounded-lg flex-grow"
+                    >
+                      <div class="flex flex-col justify-between h-full mr-4">
+                        <img
+                          src="../assets/vectors/note.svg"
+                          alt="note"
+                          class="w-6 h-6 mb-auto"
+                        />
+                        <img
+                          src="../assets/vectors/Ellipse 8.svg"
+                          alt="eclipse"
+                          class="w-3 h-3 mt-4 self-center"
+                        />
+                      </div>
+                      <div class="flex flex-col flex-grow">
+                        <span
+                          id="responsiveText"
+                          class="text-xs w-1/2 md:w-auto md:text-sm whitespace-nowrap"
+                        >
+                          You created request for Post Loss Inspection
+                        </span>
+                        <span class="text-xs text-yellow-600"
+                          >Leadway Assurance</span
+                        >
+                        <span class="text-xs text-gray-500 mt-2"
+                          >Documents reviewed</span
+                        >
+                      </div>
+                      <div>
+                        <button
+                          id="viewRequestBtn"
+                          class="whitespace-nowrap bg-yellow-500 text-white px-2 md:px-4 py-2 rounded-lg"
+                        >
+                          View request
+                        </button>
+                      </div>
                     </div>
-                    <div class="flex flex-col flex-grow">
-                      <span class="text-sm whitespace-nowrap">
-                        Request Assigned
-                      </span>
-                      <span class="text-xs text-yellow-600"
-                        >Leadway Assurance</span
-                      >
-                      <span class="text-xs text-gray-500 mt-2"
-                        >Assigned to Engineer Olaniyi</span
-                      >
-                    </div>
-                    <div>
-                      <button
-                        class="whitespace-nowrap bg-gray-200 text-gray-600 px-4 py-2 rounded"
-                      >
-                        Re-assign
-                      </button>
+                  </div>
+                </div>
+                <div class="flex flex-row space-x-8">
+                  <div
+                    class="circle rounded-full bg-yellow-600 w-2 h-2 self-center my-2"
+                  ></div>
+                  <div>
+                    <span class="text-sm text-gray-500"
+                      >24 Jan, 2023 5:00 PM</span
+                    >
+                  </div>
+                </div>
+
+                <div class="border-l border-gray-400 p-4">
+                  <div
+                    class="mr-4 border-l-8 border-gray-500 bg-white shadow hover:shadow-lg rounded-lg p-4"
+                  >
+                    <div class="flex items-center bg-white rounded-lg">
+                      <div class="flex flex-col justify-between h-full mr-4">
+                        <img
+                          src="../assets/vectors/note.svg"
+                          alt="note"
+                          class="w-6 h-6 mb-auto"
+                        />
+                        <img
+                          src="../assets/vectors/Ellipse 10.svg"
+                          alt="eclipse"
+                          class="w-3 h-3 mt-4 self-center"
+                        />
+                      </div>
+                      <div class="flex flex-col flex-grow">
+                        <span class="text-sm whitespace-nowrap">
+                          Request Assigned
+                        </span>
+                        <span class="text-xs text-yellow-600"
+                          >Leadway Assurance</span
+                        >
+                        <span class="text-xs text-gray-500 mt-2"
+                          >Assigned to Engineer Olaniyi</span
+                        >
+                      </div>
+                      <div>
+                        <button
+                          class="whitespace-nowrap bg-gray-200 text-gray-600 px-4 py-2 rounded"
+                        >
+                          Re-assign
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -334,6 +384,34 @@
           event.preventDefault();
           window.location.href = "survey_report.html";
         });
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          const firstSidebar = document.getElementById("firstSidebar");
+          const secondSidebar = document.getElementById("secondSidebar");
+          if (firstSidebar.classList.contains("hidden")) {
+            firstSidebar.classList.remove("hidden");
+            secondSidebar.classList.remove("hidden");
+          } else {
+            firstSidebar.classList.add("hidden");
+            secondSidebar.classList.add("hidden");
+          }
+        });
+      function adjustTextForScreenSize() {
+        const span = document.getElementById("responsiveText");
+        if (window.innerWidth < 768) {
+          span.innerHTML =
+            "You created request for <br /> Post Loss Inspection";
+        } else {
+          span.innerHTML = "You created request for Post Loss Inspection";
+        }
+      }
+
+      // Initial adjustment
+      adjustTextForScreenSize();
+
+      // Adjust on window resize
+      window.addEventListener("resize", adjustTextForScreenSize);
     </script>
   </body>
 </html>

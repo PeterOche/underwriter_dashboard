@@ -867,3 +867,1001 @@
     </script>
   </body>
 </html>
+
+Dashboard
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .text-golden-300 {
+        color: #fdc75b;
+      }
+
+      .button {
+        background-color: #ff7a00;
+        color: white;
+        padding-left: 10px; /* 16px */
+        padding-right: 10px; /* 16px */
+        padding-top: 5px; /* 8px */
+        padding-bottom: 5px; /* 8px */
+        border-radius: 0.375rem; /* 6px */
+        transition: background-color 0.2s;
+      }
+
+      .emoji {
+        font-size: 8px;
+        margin-right: 4px;
+      }
+
+      .button:hover {
+        background-color: #dd4b06;
+      }
+      .rounded-semi {
+        border-radius: 50%;
+      }
+      .hidden-sidebar {
+        display: none;
+      }
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background-color: #f2f2f2;
+      }
+
+      th,
+      td {
+        padding: 4px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .table-container {
+          overflow-x: auto; /* Enables horizontal scrolling */
+        }
+
+        .fix-on-mobile {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 10;
+        }
+
+        table {
+          min-width: 600px; /* Ensures table is wide enough to require scrolling */
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white-100 font-mulish max-w-full">
+    <div class="flex lg:h-screen max-w-full">
+      <!-- First Sidebar -->
+      <div
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 mt-10 lg:mt-0 left-12 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 hidden lg:block second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a href="./dashboard.html" class="flex items-center text-yellow-500">
+            <img
+              src="../assets/vectors/Group 126.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex flex-col w-full lg:ml-64">
+        <!-- Header -->
+        <div
+          class="fix-on-mobile flex justify-between lg:justify-end items-center border-b border-gray-300 bg-white p-4"
+        >
+          <button id="toggleSidebar" class="lg:hidden p-2 z-20">
+            <i class="fas fa-bars text-yellow-600"></i>
+          </button>
+
+          <div class="flex items-center space-x-4">
+            <img
+              src="../assets/vectors/notif.svg"
+              alt="notif"
+              class="text-gray-600 text-xl"
+            />
+            <img
+              src="../assets/vectors/Group 38.jpg"
+              alt="Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            <span class="text-gray-600 hidden md:block">Adesola</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 md:mt-0 flex flex-col p-10 gap-10 overflow-auto bg-[#FDFDFD]"
+        >
+          <div
+            class="w-full flex flex-col items-start justify-center gap-5 lg:items-center lg:justify-between lg:flex-row"
+          >
+            <div class="flex flex-col">
+              <h1 class="text-2xl text-bluewood-800">
+                Welcome, <span class="font-bold">Olufemi</span>
+              </h1>
+              <p class="text-gray-600">
+                Take a look at your dashboard and see all pending tasks
+              </p>
+            </div>
+            <button class="button">
+              <i class="fas fa-plus mr-2"></i> Create New Inspection
+            </button>
+          </div>
+
+          <!-- Main Dashboard Section -->
+          <div class="lg:h-1/2 flex flex-col w-full">
+            <!-- Main Dashboard Section -->
+            <div
+              class="flex flex-col lg:flex-row items-start justify-between w-full gap-5"
+            >
+              <!-- First Column: Statistics Cards -->
+              <div
+                class="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-2 md:col-span-2 flex-grow flex-shrink min-h-28"
+              >
+                <!-- Card 1 -->
+                <div
+                  class="relative w-full h-40 bg-blue-400 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                >
+                  <!-- ellipse -->
+                  <div
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-blue-300 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                  ></div>
+                  <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-blue-300 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                  ></div>
+
+                  <div class="flex flex-col justify-between">
+                    <h2 class="absolute top-4 right-4 text-lg">All Requests</h2>
+                    <p
+                      class="absolute bottom-4 right-4 font-bold text-6xl font-mulish"
+                    >
+                      32
+                    </p>
+                  </div>
+                  <img
+                    src="../assets/vectors/vector.png"
+                    alt="Vector 1"
+                    class="absolute bottom-4 left-4 w-8 h-8"
+                  />
+                </div>
+                <!-- Card 2 -->
+                <div
+                  class="relative w-full h-40 bg-green-500 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                >
+                  <!-- ellipse -->
+                  <div
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-green-400 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                  ></div>
+                  <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-green-400 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                  ></div>
+
+                  <h2 class="absolute top-4 right-4 text-lg">
+                    Completed Requests
+                  </h2>
+                  <p class="absolute bottom-4 right-4 font-bold text-6xl">
+                    114
+                  </p>
+                  <img
+                    src="../assets/vectors/vector.png"
+                    alt="Vector 1"
+                    class="absolute bottom-4 left-4 w-8 h-8"
+                  />
+                </div>
+                <!-- Card 3 -->
+                <div
+                  class="relative w-full h-40 bg-yellow-300 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                >
+                  <!-- ellipse -->
+                  <div
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                  ></div>
+                  <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                  ></div>
+
+                  <div class="flex flex-col justify-between">
+                    <h2 class="absolute top-4 right-4 text-lg">
+                      Ongoing Requests
+                    </h2>
+                    <p class="absolute bottom-4 right-4 font-bold text-6xl">
+                      19
+                    </p>
+                  </div>
+                  <img
+                    src="../assets/vectors/vector.png"
+                    alt="Vector 1"
+                    class="absolute bottom-4 left-4 w-8 h-8"
+                  />
+                </div>
+                <!-- Card 4 -->
+                <div
+                  class="relative w-full h-40 bg-red-700 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                >
+                  <!-- ellipse -->
+                  <div
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                  ></div>
+                  <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                  ></div>
+
+                  <div class="flex flex-col justify-between">
+                    <h2 class="absolute top-4 right-4 text-lg">
+                      Delayed Requests
+                    </h2>
+                    <p class="absolute bottom-4 right-4 font-bold text-6xl">
+                      19
+                    </p>
+                  </div>
+                  <img
+                    src="../assets/vectors/vector.png"
+                    alt="Vector 1"
+                    class="absolute bottom-4 left-4 w-8 h-8"
+                  />
+                </div>
+              </div>
+
+              <!-- Second Column: Activity Section -->
+              <div
+                class="rounded-lg border border-[#D8D8D8] p-4 w-full lg:w-2/5"
+              >
+                <h2 class="text-xl mb-4 px-4 mt-2">Activity</h2>
+                <ul
+                  class="space-y-2 overflow-y-auto flex-grow flex-shrink min-h-0"
+                >
+                  <li
+                    class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                  >
+                    <span class=""
+                      >You have a property inspection coming up in three
+                      days</span
+                    >
+                    <a
+                      href="#"
+                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      >Set reminder</a
+                    >
+                  </li>
+                  <li
+                    class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                  >
+                    <span
+                      >Mustapha Onasanya sent a new property inspection for
+                      Ravenheight homes</span
+                    >
+                    <a
+                      href="#"
+                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      >See inspection</a
+                    >
+                  </li>
+                  <li
+                    class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                  >
+                    <span
+                      >Your scheduled inspection for Gig Logistics is three days
+                      overdue</span
+                    >
+                    <a
+                      href="#"
+                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      >Re-schedule now</a
+                    >
+                  </li>
+                  <li
+                    class="flex justify-between text-gray-600 border-t px-2 py-1 text-xs overflow-hidden text-ellipsis"
+                  >
+                    <span
+                      >Mustapha Onasanya sent a new property inspection for
+                      Ravenheight homes</span
+                    >
+                    <a
+                      href="#"
+                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      >See inspection</a
+                    >
+                  </li>
+                  <li
+                    class="flex justify-between text-gray-600 border-t px-4 py-6 pb-4 text-xs overflow-hidden text-ellipsis"
+                  >
+                    <!-- Add more list items here -->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:h-1/2 flex flex-col w-full">
+            <!-- Table of Created Inspections -->
+            <div class="bg-white p-4 rounded max-w-full lg:mt-20 mx-4">
+              <h2 class="text-lg text-bluewood-800 mb-4">
+                Created Inspections
+              </h2>
+              <div class="table-container">
+                <table class="min-w-full bg-white border shadow-lg">
+                  <thead>
+                    <tr class="text-bluewood-800 font-thin text-left">
+                      <th class="py-2 px-4 font-thin">ID</th>
+                      <th class="py-2 px-4 font-thin">Name</th>
+                      <th class="py-2 px-4 font-thin">Class</th>
+                      <th class="py-2 px-4 font-thin hide-on-mobile">
+                        Inspection method
+                      </th>
+                      <th class="py-2 px-4 font-thin hide-on-mobile">
+                        Officer
+                      </th>
+                      <th class="py-2 px-4 font-thin">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Sample Data -->
+                    <tr class="text-gray-700">
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="ID"
+                      >
+                        10321
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Name"
+                      >
+                        GIG Logistics
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Class"
+                      >
+                        <span class="emoji">🟣</span> Marine
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Digital
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Status"
+                      >
+                        Quote Request
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700">
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="ID"
+                      >
+                        10321
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Name"
+                      >
+                        Shoprite Stores
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Class"
+                      >
+                        <span class="emoji">🔵</span> Property
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Manual
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Status"
+                      >
+                        <span
+                          class="bg-green-100 text-green-500 py-1 px-3 rounded"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700">
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="ID"
+                      >
+                        10321
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Name"
+                      >
+                        Abiodun Abayomi
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold"
+                        data-label="Class"
+                      >
+                        <span class="emoji">🟠</span> Motors
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Digital
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 text-sm font-semibold text-yellow-500"
+                        data-label="Status"
+                      >
+                        <span
+                          class="bg-yellow-200 text-yellow-500 font-semibold py-1 px-3 rounded"
+                          >Ongoing</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700 text-sm">
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="ID"
+                      >
+                        10321
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="Name"
+                      >
+                        Ben's Agro Allied
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="Class"
+                      >
+                        <span class="emoji">🟢</span> Agric
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Manual
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="Status"
+                      >
+                        <span
+                          class="bg-green-100 text-green-500 font-semibold py-1 px-3 rounded"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700 text-sm font-semibold">
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="ID"
+                      >
+                        10321
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="Name"
+                      >
+                        GIG Logistics
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold"
+                        data-label="Class"
+                      >
+                        <span class="emoji">🟡</span> Band
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Digital
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 font-semibold text-yellow-700"
+                        data-label="Status"
+                      >
+                        <span
+                          class="bg-yellow-200 text-yellow-500 py-1 px-3 rounded"
+                          >Ongoing</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700 text-sm font-semibold">
+                      <td class="border-t py-2 px-4" data-label="ID">10321</td>
+                      <td class="border-t py-2 px-4" data-label="Name">
+                        Redes Microfinance
+                      </td>
+                      <td class="border-t py-2 px-4" data-label="Class">
+                        <span class="emoji">🔴</span> Engineering
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Manual
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td class="border-t py-2 px-4" data-label="Status">
+                        Sent to engineer
+                      </td>
+                    </tr>
+                    <tr class="text-gray-700 text-sm font-semibold">
+                      <td class="border-t py-2 px-4" data-label="ID">10321</td>
+                      <td class="border-t py-2 px-4" data-label="Name">
+                        Redes Microfinance
+                      </td>
+                      <td class="border-t py-2 px-4" data-label="Class">
+                        <span class="emoji">🟢</span> Agric
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 hide-on-mobile"
+                        data-label="Inspection method"
+                      >
+                        Manual
+                      </td>
+                      <td
+                        class="border-t py-2 px-4 hide-on-mobile"
+                        data-label="Officer"
+                      >
+                        Mustapha Onasanya
+                      </td>
+                      <td class="border-t py-2 px-4" data-label="Status">
+                        <span class="bg-red-200 text-red-700 py-1 px-3 rounded"
+                          >Link Expired</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          const firstSidebar = document.getElementById("firstSidebar");
+          const secondSidebar = document.getElementById("secondSidebar");
+          if (firstSidebar.classList.contains("hidden")) {
+            firstSidebar.classList.remove("hidden");
+            secondSidebar.classList.remove("hidden");
+          } else {
+            firstSidebar.classList.add("hidden");
+            secondSidebar.classList.add("hidden");
+          }
+        });
+    </script>
+  </body>
+</html>
+
+create new inspect:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Inspection</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .hidden {
+        display: none;
+      }
+      .selected {
+        background-color: #f8f7f7;
+      }
+      @media (max-width: 768px) {
+        .second-sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+        .second-sidebar.open {
+          transform: translateX(0);
+        }
+        .hamburger {
+          display: block;
+        }
+      }
+      @media (min-width: 769px) {
+        .hamburger {
+          display: none;
+        }
+      }
+      .selected-border {
+        border: 2px solid #ff7a00; /* yellow-600 */
+        border-right: 1px solid #ff7a00;
+        border-radius: 5px;
+      }
+
+      .button-yellow-500 {
+        background-color: #ff7a00; /* yellow-600 */
+      }
+    </style>
+  </head>
+  <body class="bg-white-100 font-mulish">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div class="fixed top-0 left-0 w-16 h-full bg-gray-800 z-10">
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/Layer 2.svg" alt="Overview" />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-16 w-48 h-full bg-white shadow-md z-10 second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a
+            href="./dashboard.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img src="../assets/overviewVec.png" alt="Overview" />
+            <span class="ml-1">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-yellow-500"
+          >
+            <img src="../assets/requestAct.png" alt="request" />
+            <span class="ml-1">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div class="fixed top-4 left-20 z-20 hamburger">
+        <button id="hamburgerButton" class="text-gray-800 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-64 pt-16 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-6 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 py-2 pr-10"
+        >
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-10 h-10 pb-1 rounded-full"
+          />
+          <span class="text-gray-600">Adesola</span>
+        </div>
+
+        <!-- Create New Inspection -->
+        <div class="bg-white p-6 rounded-lg">
+          <div class="mb-6 flex justify-between items-center">
+            <div>
+              <h1 class="text-xl font-bold mb-4 text-bluewood-800">
+                Create New Inspection
+              </h1>
+              <p class="text-bluewood-800 mb-6">
+                See inspections across all business classes
+              </p>
+            </div>
+            <div class="flex-col items-center">
+              <img src="../assets/vectors/close.svg" alt="close" class="mt-0" />
+              <p class="text-sm ml-2">close</p>
+            </div>
+          </div>
+
+          <div class="flex justify-center mb-6 gap-2">
+            <div class="flex flex-col items-center justify-center p-0">
+              <img
+                id="preLossImg"
+                src="../assets/Frame 118.png"
+                alt="Pre-loss Inspection"
+                width="180px"
+                height="200px"
+                class="mb-4"
+              />
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+              <img
+                src="../assets/Frame 119.png"
+                alt="Post-loss Inspection"
+                id="postLossImg"
+                width="180px"
+                height="200px"
+                class="mb-4"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center w-full">
+            <div class="w-full max-w-xs">
+              <label for="classSelect" class="text-gray-700 mb-2"
+                >Choose a class</label
+              >
+              <select
+                id="classSelect"
+                class="custom-select w-full border px-4 py-2 rounded text-xs"
+              >
+                <option value="property">🔵 Property</option>
+                <option value="auto">🟠 Motors</option>
+                <option value="marine">🟣 Marine</option>
+                <option value="agric">🟢 Agric</option>
+                <option value="agric">🟡 Bond</option>
+                <option value="agric">🔴 Engineering</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-col items-center w-full mt-20 mb-4">
+            <button
+              id="createRequestBtn"
+              class="text-white bg-gray-400 px-4 py-2 rounded flex items-center mr-10"
+            >
+              <img src="../assets/vectors/arrow.svg" class="mr-4" />
+              Create Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("hamburgerButton")
+        .addEventListener("click", function () {
+          const sidebar = document.getElementById("secondSidebar");
+          sidebar.classList.toggle("open");
+        });
+
+      const preLossImg = document.getElementById("preLossImg");
+      const postLossImg = document.getElementById("postLossImg");
+      const createRequestBtn = document.getElementById("createRequestBtn");
+      let selectedImage = null;
+
+      function clearSelection() {
+        preLossImg.classList.remove("selected-border");
+        postLossImg.classList.remove("selected-border");
+        createRequestBtn.classList.remove("button-yellow-500");
+        selectedImage = null;
+      }
+
+      preLossImg.addEventListener("click", function () {
+        clearSelection();
+        preLossImg.classList.add("selected-border");
+        createRequestBtn.classList.add("button-yellow-500");
+        selectedImage = "preLoss";
+      });
+
+      postLossImg.addEventListener("click", function () {
+        clearSelection();
+        postLossImg.classList.add("selected-border");
+        createRequestBtn.classList.add("button-yellow-500");
+        selectedImage = "postLoss";
+      });
+
+      createRequestBtn.addEventListener("click", function () {
+        if (selectedImage === "preLoss") {
+          window.location.href = "pre_loss_inspection_page.html";
+        } else if (selectedImage === "postLoss") {
+          window.location.href = "post_loss_inspection_page.html";
+        } else {
+          alert("Please select an inspection type.");
+        }
+      });
+    </script>
+  </body>
+</html>

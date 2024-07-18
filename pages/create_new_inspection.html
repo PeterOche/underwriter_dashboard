@@ -26,44 +26,53 @@
       .text-bluewood-800 {
         color: #34475e;
       }
-      .hidden {
+      .hidden-sidebar {
         display: none;
       }
+
       .selected {
         background-color: #f8f7f7;
       }
-      @media (max-width: 768px) {
-        .second-sidebar {
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-        }
-        .second-sidebar.open {
-          transform: translateX(0);
-        }
-        .hamburger {
-          display: block;
-        }
-      }
-      @media (min-width: 769px) {
-        .hamburger {
-          display: none;
-        }
-      }
+
       .selected-border {
         border: 2px solid #ff7a00; /* yellow-600 */
         border-right: 1px solid #ff7a00;
         border-radius: 5px;
       }
 
+      @media (max-width: 600px) {
+        .table-container {
+          overflow-x: auto; /* Enables horizontal scrolling */
+        }
+
+        .fix-on-mobile {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 10;
+        }
+        @media (max-width: 1000px) {
+          .hide-on-mobile {
+            display: none;
+          }
+        }
+
+        table {
+          min-width: 600px; /* Ensures table is wide enough to require scrolling */
+        }
+      }
       .button-yellow-500 {
         background-color: #ff7a00; /* yellow-600 */
       }
     </style>
   </head>
-  <body class="bg-white-100 font-mulish">
-    <div class="flex h-screen">
+  <body class="bg-white-100 font-mulish max-w-full">
+    <div class="flex h-screen max-w-full">
       <!-- First Sidebar -->
-      <div class="fixed top-0 left-0 w-16 h-full bg-gray-800 z-10">
+      <div
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
+      >
         <nav
           class="flex flex-col items-center h-full space-y-4 text-white"
           style="padding-top: 115px"
@@ -75,11 +84,12 @@
               class="mb-3"
             />
           </a>
+
           <a href="#" class="hover:text-yellow-500">
             <img
               src="../assets/vectors/calender.png"
               alt="calender"
-              class="mb-3"
+              class="mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
           <a href="#" class="hover:text-yellow-500">
@@ -89,18 +99,22 @@
             <img
               src="../assets/vectors/Dribbble Light Preview.svg"
               alt="Overview"
-              class="mb-3"
+              class="mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
           <a href="#" class="hover:text-yellow-500">
             <img
               src="../assets/vectors/Layer 5.svg"
               alt="Overview"
-              class="mb-3"
+              class="mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
           <a href="#" class="hover:text-yellow-500">
-            <img src="../assets/vectors/Layer 2.svg" alt="Overview" />
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
           </a>
         </nav>
       </div>
@@ -108,7 +122,7 @@
       <!-- Second Sidebar -->
       <div
         id="secondSidebar"
-        class="fixed top-0 left-16 w-48 h-full bg-white shadow-md z-10 second-sidebar"
+        class="fixed top-0 mt-10 lg:mt-0 left-12 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 hidden lg:block second-sidebar"
       >
         <div class="p-4">
           <img
@@ -121,50 +135,53 @@
           <h2>TRM</h2>
           <a
             href="./dashboard.html"
-            class="flex items-center text-gray-700 hover:text-yellow-500"
+            class="flex items-center hover:text-yellow-500"
           >
-            <img src="../assets/overviewVec.png" alt="Overview" />
-            <span class="ml-1">Overview</span>
+            <img
+              src="../assets/vectors/Group 126.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
           </a>
           <a
             href="inspection_page.html"
             class="flex items-center text-yellow-500"
           >
-            <img src="../assets/requestAct.png" alt="request" />
-            <span class="ml-1">Requests</span>
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
           </a>
         </nav>
       </div>
 
-      <!-- Hamburger Menu -->
-      <div class="fixed top-4 left-20 z-20 hamburger">
-        <button id="hamburgerButton" class="text-gray-800 focus:outline-none">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
-
       <!-- Main Content -->
-      <div class="flex-1 ml-64 pt-16 p-6">
+      <div class="flex-1 h-full w-full lg:ml-64">
         <!-- Header -->
         <div
-          class="flex justify-end items-center mb-6 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 py-2 pr-10"
+          class="fix-on-mobile flex justify-between lg:justify-end items-center border-b border-gray-300 bg-white p-4"
         >
-          <img
-            src="../assets/vectors/notif.svg"
-            alt="notif"
-            class="text-gray-600 text-xl"
-          />
-          <img
-            src="../assets/vectors/Group 38.jpg"
-            alt="Profile"
-            class="w-10 h-10 pb-1 rounded-full"
-          />
-          <span class="text-gray-600">Adesola</span>
+          <button id="toggleSidebar" class="lg:hidden p-2 z-20">
+            <i class="fas fa-bars text-yellow-600"></i>
+          </button>
+
+          <div class="mr-4 md:mr-0 flex items-center space-x-4">
+            <img
+              src="../assets/vectors/notif.svg"
+              alt="notif"
+              class="text-gray-600 text-xl"
+            />
+            <img
+              src="../assets/vectors/Group 38.jpg"
+              alt="Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            <span class="text-gray-600 hidden lg:block">Adesola</span>
+          </div>
         </div>
 
         <!-- Create New Inspection -->
-        <div class="bg-white p-6 rounded-lg">
-          <div class="mb-6 flex justify-between items-center">
+        <div class="mt-28 md:mt-0 bg-white p-6 rounded-lg">
+          <div class="md:mb-6 flex justify-between items-center">
             <div>
               <h1 class="text-xl font-bold mb-4 text-bluewood-800">
                 Create New Inspection
@@ -212,11 +229,11 @@
                 class="custom-select w-full border px-4 py-2 rounded text-xs"
               >
                 <option value="property">🔵 Property</option>
-                <option value="auto">🟠 Motors</option>
+                <option value="motor">🟠 Motors</option>
                 <option value="marine">🟣 Marine</option>
                 <option value="agric">🟢 Agric</option>
-                <option value="agric">🟡 Bond</option>
-                <option value="agric">🔴 Engineering</option>
+                <option value="bond">🟡 Bond</option>
+                <option value="engineering">🔴 Engineering</option>
               </select>
             </div>
           </div>
@@ -235,15 +252,23 @@
 
     <script>
       document
-        .getElementById("hamburgerButton")
+        .getElementById("toggleSidebar")
         .addEventListener("click", function () {
-          const sidebar = document.getElementById("secondSidebar");
-          sidebar.classList.toggle("open");
+          const firstSidebar = document.getElementById("firstSidebar");
+          const secondSidebar = document.getElementById("secondSidebar");
+          if (firstSidebar.classList.contains("hidden")) {
+            firstSidebar.classList.remove("hidden");
+            secondSidebar.classList.remove("hidden");
+          } else {
+            firstSidebar.classList.add("hidden");
+            secondSidebar.classList.add("hidden");
+          }
         });
 
       const preLossImg = document.getElementById("preLossImg");
       const postLossImg = document.getElementById("postLossImg");
       const createRequestBtn = document.getElementById("createRequestBtn");
+      const classSelect = document.getElementById("classSelect");
       let selectedImage = null;
 
       function clearSelection() {
@@ -268,12 +293,28 @@
       });
 
       createRequestBtn.addEventListener("click", function () {
-        if (selectedImage === "preLoss") {
-          window.location.href = "pre_loss_inspection_page.html";
-        } else if (selectedImage === "postLoss") {
-          window.location.href = "post_loss_inspection_page.html";
+        const selectedOption = classSelect.value;
+        console.log("Selected Option:", selectedOption);
+        console.log("Selected Image:", selectedImage);
+
+        if (selectedOption === "property") {
+          if (selectedImage === "preLoss") {
+            window.location.href = "pre_loss_inspection_page.html";
+          } else if (selectedImage === "postLoss") {
+            window.location.href = "post_loss_inspection_page.html";
+          } else {
+            alert("Please select an inspection type.");
+          }
+        } else if (selectedOption === "motor") {
+          if (selectedImage === "preLoss") {
+            window.location.href = "motor_pre_loss_inspection_page.html";
+          } else if (selectedImage === "postLoss") {
+            window.location.href = "motor_post_loss_inspection_page.html";
+          } else {
+            alert("Please select an inspection type.");
+          }
         } else {
-          alert("Please select an inspection type.");
+          alert("Please select a valid option from the dropdown.");
         }
       });
     </script>
