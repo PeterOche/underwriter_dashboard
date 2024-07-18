@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properties</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .button {
+        background-color: #ff7a00;
+        color: white;
+        padding-left: 1rem; /* 16px */
+        padding-right: 1rem; /* 16px */
+        padding-top: 0.5rem; /* 8px */
+        padding-bottom: 0.5rem; /* 8px */
+        border-radius: 0.375rem; /* 6px */
+        transition: background-color 0.2s;
+      }
+
+      .button:hover {
+        background-color: #dd4b06;
+      }
+      .circle {
+        margin-left: -3px;
+      }
+    </style>
+  </head>
+  <body class="bg-white-100">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-16 md:left-16 lg:left-16 w-48 h-full bg-white shadow-md z-10 second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a
+            href="./dashboard.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img
+              src="../assets/overviewVec.png"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-yellow-500"
+          >
+            <img src="../assets/requestAct.png" alt="request" />
+            <span class="ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-64 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 pr-10 py-2"
+        >
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-10 h-10 rounded-full"
+          />
+          <span class="text-gray-600">Adesola</span>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="mt-14 p-4">
+          <div class="mt-4 mb-6 pb-10 flex justify-between items-center">
+            <div>
+              <h1
+                class="text-lg text-gray-600 ml-4 md:text-l font-bold lg: text-l"
+              >
+                Rovenheight Properties
+              </h1>
+              <p class="text-gray-600 ml-4">See Inspection request details</p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row">
+            <!-- Left Column -->
+            <div
+              class="flex flex-col justify-around bg-white shadow-lg rounded-lg p-2 w-full md:w-1/4"
+            >
+              <div class="flex flex-col justify-center">
+                <div class="self-center w-22 h-22">
+                  <img
+                    src="../assets/passport.png"
+                    alt="Profile"
+                    class="mb-4"
+                  />
+                </div>
+
+                <h2 class="self-center text-xl font-bold">Goodness Ibeneme</h2>
+                <p class="my-4 font-bold ml-4 text-green-500">
+                  Inspection Status:
+                  <span class="text-yellow-500">ongoing</span>
+                </p>
+              </div>
+
+              <div class="mt-4">
+                <div class="flex flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Claim Number:</p>
+                  <p class="text-sm">ASD12358493</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Policy Number:</p>
+                  <p class="text-sm">MTR12358493</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Commencement Date:</p>
+                  <p class="text-sm">31 May 2022</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Sum Assured (₦):</p>
+                  <p class="text-sm">1,000,000</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Premium (₦):</p>
+                  <p class="text-sm">10,000</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Vehicle Type:</p>
+                  <p class="text-sm">Car</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Policy Term (Years):</p>
+                  <p class="text-sm">5</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Expiry Date:</p>
+
+                  <p class="text-sm">19 Dec, 2024</p>
+                </div>
+                <div class="flex-col justify-between ml-10 my-4">
+                  <p class="text-xs text-gray-400">Damage Type:</p>
+                  <p class="text-sm">Interior (engine)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+
+            <div class="flex-1 md:ml-12 mt-6 md:mt-0">
+              <div class="flex flex-row space-x-8">
+                <div
+                  class="circle rounded-full bg-yellow-600 w-2 h-2 self-center"
+                ></div>
+                <span class="text-sm text-gray-500">25 Jan, 2023 9:23 AM</span>
+              </div>
+
+              <div class="border-l border-gray-400 p-4">
+                <div
+                  class="ml-10 mr-0 border-l-8 border-yellow-600 bg-white shadow hover:shadow-lg rounded-lg p-4 mb-4"
+                >
+                  <div class="flex items-center bg-white rounded-lg">
+                    <div class="flex flex-col justify-between h-full mr-4">
+                      <img
+                        src="../assets/vectors/note.svg"
+                        alt="note"
+                        class="w-6 h-6 mb-auto"
+                      />
+                      <img
+                        src="../assets/vectors/Ellipse 8.svg"
+                        alt="eclipse"
+                        class="w-3 h-3 mt-4 self-center"
+                      />
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                      <span class="text-sm whitespace-nowrap">
+                        You created request for Post Loss Inspection
+                      </span>
+                      <span class="text-xs text-yellow-600"
+                        >Leadway Assurance</span
+                      >
+                      <span class="text-xs text-gray-500 mt-2"
+                        >Documents reviewed</span
+                      >
+                    </div>
+                    <div>
+                      <button
+                        id="viewRequestBtn"
+                        class="button whitespace-nowrap bg-orange-500 text-white px-4 py-2 rounded-lg"
+                      >
+                        View request
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-row space-x-8">
+                <div
+                  class="circle rounded-full bg-yellow-600 w-2 h-2 self-center my-2"
+                ></div>
+                <div>
+                  <span class="text-sm text-gray-500"
+                    >24 Jan, 2023 5:00 PM</span
+                  >
+                </div>
+              </div>
+
+              <div class="border-l border-gray-400 p-4">
+                <div
+                  class="mr-4 border-l-8 border-gray-500 bg-white shadow hover:shadow-lg rounded-lg p-4"
+                >
+                  <div class="flex items-center bg-white rounded-lg">
+                    <div class="flex flex-col justify-between h-full mr-4">
+                      <img
+                        src="../assets/vectors/note.svg"
+                        alt="note"
+                        class="w-6 h-6 mb-auto"
+                      />
+                      <img
+                        src="../assets/vectors/Ellipse 10.svg"
+                        alt="eclipse"
+                        class="w-3 h-3 mt-4 self-center"
+                      />
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                      <span class="text-sm whitespace-nowrap">
+                        Request Assigned
+                      </span>
+                      <span class="text-xs text-yellow-600"
+                        >Leadway Assurance</span
+                      >
+                      <span class="text-xs text-gray-500 mt-2"
+                        >Assigned to Engineer Olaniyi</span
+                      >
+                    </div>
+                    <div>
+                      <button
+                        class="whitespace-nowrap bg-gray-200 text-gray-600 px-4 py-2 rounded"
+                      >
+                        Re-assign
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("viewRequestBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = "survey_report.html";
+        });
+    </script>
+  </body>
+</html>

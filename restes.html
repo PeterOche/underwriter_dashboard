@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .text-golden-300 {
+        color: #fdc75b;
+      }
+
+      .button {
+        background-color: #ff7a00;
+        color: white;
+        padding-left: 1rem; /* 16px */
+        padding-right: 1rem; /* 16px */
+        padding-top: 0.5rem; /* 8px */
+        padding-bottom: 0.5rem; /* 8px */
+        border-radius: 0.375rem; /* 6px */
+        transition: background-color 0.2s;
+      }
+
+      .emoji {
+        font-size: 8px;
+        margin-right: 4px;
+      }
+
+      .button:hover {
+        background-color: #dd4b06;
+      }
+      .rounded-semi {
+        border-radius: 50%;
+      }
+      .hidden-sidebar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-white-100 font-mulish">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-16 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 hidden lg:block second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a href="./dashboard.html" class="flex items-center text-yellow-500">
+            <img
+              src="../assets/vectors/Group 126.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-64 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 pr-10 py-2"
+        >
+          <button id="toggleSidebar" class="md:hidden p-2">
+            <i class="fas fa-bars text-gray-600"></i>
+          </button>
+
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-10 h-10 rounded-full"
+          />
+          <span class="text-gray-600">Adesola</span>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="mt-10 mb-10 flex justify-between items-center px-4">
+          <div>
+            <h1 class="text-2xl text-bluewood-800">
+              Welcome, <span class="font-bold">Olufemi</span>
+            </h1>
+            <p class="text-gray-600">
+              Take a look at your dashboard and see all pending tasks
+            </p>
+          </div>
+          <button class="button">
+            <i class="fas fa-plus mr-2"></i> Create New Inspection
+          </button>
+        </div>
+
+        <!-- Main Dashboard Section -->
+        <div class="h-1/2 flex flex-col">
+          <!-- Main Dashboard Section -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 flex-grow flex-shrink min-h-0"
+          >
+            <!-- First Column: Statistics Cards -->
+            <div
+              class="grid grid-cols-2 grid-rows-2 gap-2 md:col-span-2 flex-grow flex-shrink min-h-0"
+            >
+              <!-- Card 1 -->
+              <div
+                class="relative w-full bg-blue-400 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink min-h-0 overflow-hidden"
+              >
+                <!-- ellipse -->
+                <div
+                  class="absolute bottom-0 left-0 w-32 h-32 bg-blue-300 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                ></div>
+                <div
+                  class="absolute top-0 right-0 w-32 h-32 bg-blue-300 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                ></div>
+
+                <div class="flex flex-col justify-between">
+                  <h2 class="absolute top-4 right-4 text-lg">All Requests</h2>
+                  <p
+                    class="absolute bottom-4 right-4 font-bold text-6xl font-mulish"
+                  >
+                    32
+                  </p>
+                </div>
+                <img
+                  src="../assets/vectors/vector.png"
+                  alt="Vector 1"
+                  class="absolute bottom-4 left-4 w-8 h-8"
+                />
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="relative w-full bg-green-500 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink min-h-0 overflow-hidden"
+              >
+                <!-- ellipse -->
+                <div
+                  class="absolute bottom-0 left-0 w-32 h-32 bg-green-400 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                ></div>
+                <div
+                  class="absolute top-0 right-0 w-32 h-32 bg-green-400 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                ></div>
+
+                <h2 class="absolute top-4 right-4 text-lg">
+                  Completed Requests
+                </h2>
+                <p class="absolute bottom-4 right-4 font-bold text-6xl">114</p>
+                <img
+                  src="../assets/vectors/vector.png"
+                  alt="Vector 1"
+                  class="absolute bottom-4 left-4 w-8 h-8"
+                />
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="relative w-full bg-yellow-300 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden min-h-0"
+              >
+                <!-- ellipse -->
+                <div
+                  class="absolute bottom-0 left-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                ></div>
+                <div
+                  class="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                ></div>
+
+                <div class="flex flex-col justify-between">
+                  <h2 class="absolute top-4 right-4 text-lg">
+                    Ongoing Requests
+                  </h2>
+                  <p class="absolute bottom-4 right-4 font-bold text-6xl">19</p>
+                </div>
+                <img
+                  src="../assets/vectors/vector.png"
+                  alt="Vector 1"
+                  class="absolute bottom-4 left-4 w-8 h-8"
+                />
+              </div>
+              <!-- Card 4 -->
+              <div
+                class="relative w-full bg-red-700 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink min-h-0 overflow-hidden"
+              >
+                <!-- ellipse -->
+                <div
+                  class="absolute bottom-0 left-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                ></div>
+                <div
+                  class="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                ></div>
+
+                <div class="flex flex-col justify-between">
+                  <h2 class="absolute top-4 right-4 text-lg">
+                    Delayed Requests
+                  </h2>
+                  <p class="absolute bottom-4 right-4 font-bold text-6xl">19</p>
+                </div>
+                <img
+                  src="../assets/vectors/vector.png"
+                  alt="Vector 1"
+                  class="absolute bottom-4 left-4 w-8 h-8"
+                />
+              </div>
+            </div>
+
+            <!-- Second Column: Activity Section -->
+            <div
+              class="w-full bg-white py-4 shadow rounded-lg border border-gray-300 flex flex-col flex-grow flex-shrink min-h-0"
+            >
+              <h2 class="text-xl mb-4 px-4">Activity</h2>
+              <ul
+                class="space-y-2 overflow-y-auto flex-grow flex-shrink min-h-0"
+              >
+                <li
+                  class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                >
+                  <span class=""
+                    >You have a property inspection coming up in three
+                    days</span
+                  >
+                  <a
+                    href="#"
+                    class="text-yellow-500 hover:underline whitespace-nowrap"
+                    >Set reminder</a
+                  >
+                </li>
+                <li
+                  class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                >
+                  <span
+                    >Mustapha Onasanya sent a new property inspection for
+                    Ravenheight homes</span
+                  >
+                  <a
+                    href="#"
+                    class="text-yellow-500 hover:underline whitespace-nowrap"
+                    >See inspection</a
+                  >
+                </li>
+                <li
+                  class="flex justify-between text-gray-600 border-t px-4 py-2 text-xs overflow-hidden text-ellipsis"
+                >
+                  <span
+                    >Your scheduled inspection for Gig Logistics is three days
+                    overdue</span
+                  >
+                  <a
+                    href="#"
+                    class="text-yellow-500 hover:underline whitespace-nowrap"
+                    >Re-schedule now</a
+                  >
+                </li>
+                <li
+                  class="flex justify-between text-gray-600 border-t px-2 py-1 text-xs overflow-hidden text-ellipsis"
+                >
+                  <span
+                    >Mustapha Onasanya sent a new property inspection for
+                    Ravenheight homes</span
+                  >
+                  <a
+                    href="#"
+                    class="text-yellow-500 hover:underline whitespace-nowrap"
+                    >See inspection</a
+                  >
+                </li>
+                <li
+                  class="flex justify-between text-gray-600 border-t px-4 py-2 pb-4 text-xs overflow-hidden text-ellipsis"
+                >
+                  <!-- Add more list items here -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table of Created Inspections -->
+        <div class="bg-white p-4 rounded mt-20 mx-4">
+          <h2 class="text-lg text-bluewood-800 mb-4">Created Inspections</h2>
+          <table class="min-w-full bg-white border shadow-lg">
+            <thead>
+              <tr class="text-bluewood-800 font-thin text-left">
+                <th class="py-2 px-4 font-thin">ID</th>
+                <th class="py-2 px-4 font-thin">Name</th>
+                <th class="py-2 px-4 font-thin">Class</th>
+                <th class="py-2 px-4 font-thin">Inspection method</th>
+                <th class="py-2 px-4 font-thin">Officer</th>
+                <th class="py-2 px-4 font-thin">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Sample Data -->
+              <tr class="text-gray-700">
+                <td class="border-t py-2 px-4 text-sm font-semibold">10321</td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  GIG Logistics
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  <span class="emoji">🟣</span> Marine
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Digital
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Mustapha Onasanya
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Quote Request
+                </td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="border-t py-2 px-4 text-sm font-semibold">10321</td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Shoprite Stores
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  <span class="emoji">🔵</span> Property
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">Manual</td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Mustapha Onasanya
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  <span class="bg-green-100 text-green-500 py-1 px-3 rounded"
+                    >Completed</span
+                  >
+                </td>
+              </tr>
+              <tr class="text-gray-700">
+                <td class="border-t py-2 px-4 text-sm font-semibold">10321</td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Abiodun Abayomi
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  <span class="emoji">🟠</span> Motors
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Digital
+                </td>
+                <td class="border-t py-2 px-4 text-sm font-semibold">
+                  Mustapha Onasanya
+                </td>
+                <td
+                  class="border-t py-2 px-4 text-sm font-semibold text-yellow-500"
+                >
+                  <span
+                    class="bg-yellow-200 text-yellow-500 font-semibold py-1 px-3 rounded"
+                  >
+                    Ongoing
+                  </span>
+                </td>
+              </tr>
+              <tr class="text-gray-700 text-sm">
+                <td class="border-t py-2 px-4 font-semibold">10321</td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  Ben's Agro Allied
+                </td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  <span class="emoji">🟢</span>Agric
+                </td>
+                <td class="border-t py-2 px-4 font-semibold">Manual</td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  Mustapha Onasanya
+                </td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  <span
+                    class="bg-green-100 text-green-500 font-semibold py-1 px-3 rounded"
+                    >Completed</span
+                  >
+                </td>
+              </tr>
+              <tr class="text-gray-700 text-sm font-semibold">
+                <td class="border-t py-2 px-4 font-semibold">10321</td>
+                <td class="border-t py-2 px-4 font-semibold">GIG Logistics</td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  <span class="emoji">🟡</span>Band
+                </td>
+                <td class="border-t py-2 px-4 font-semibold">Digital</td>
+                <td class="border-t py-2 px-4 font-semibold">
+                  Mustapha Onasanya
+                </td>
+                <td class="border-t py-2 px-4 font-semibold text-yellow-700">
+                  <span class="bg-yellow-200 text-yellow-500 py-1 px-3 rounded"
+                    >Ongoing</span
+                  >
+                </td>
+              </tr>
+              <tr class="text-gray-700 text-sm font-semibold">
+                <td class="border-t py-2 px-4">10321</td>
+                <td class="border-t py-2 px-4">Redes Microfinance</td>
+                <td class="border-t py-2 px-4">
+                  <span class="emoji">🔴</span>Engineering
+                </td>
+                <td class="border-t py-2 px-4">Manual</td>
+                <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                <td class="border-t py-2 px-4">Sent to engineer</td>
+              </tr>
+
+              <tr class="text-gray-700 text-sm font-semibold">
+                <td class="border-t py-2 px-4">10321</td>
+                <td class="border-t py-2 px-4">Redes Microfinance</td>
+                <td class="border-t py-2 px-4">
+                  <span class="emoji">🟢</span>Agric
+                </td>
+                <td class="border-t py-2 px-4">Manual</td>
+                <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                <td class="border-t py-2 px-4">
+                  <span class="bg-red-200 text-red-700 py-1 px-3 rounded"
+                    >Link Expired</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          const firstSidebar = document.getElementById("firstSidebar");
+          const secondSidebar = document.getElementById("secondSidebar");
+          if (firstSidebar.classList.contains("hidden")) {
+            firstSidebar.classList.remove("hidden");
+            secondSidebar.classList.remove("hidden");
+          } else {
+            firstSidebar.classList.add("hidden");
+            secondSidebar.classList.add("hidden");
+          }
+        });
+    </script>
+  </body>
+</html>

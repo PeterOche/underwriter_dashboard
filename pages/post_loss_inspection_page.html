@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Inspection</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .hidden {
+        display: none;
+      }
+      .selected {
+        background-color: #f8f7f7;
+      }
+      @media (max-width: 768px) {
+        .second-sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+        .second-sidebar.open {
+          transform: translateX(0);
+        }
+        .hamburger {
+          display: block;
+        }
+      }
+      @media (min-width: 769px) {
+        .hamburger {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white-100 font-mulish">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-16 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a
+            href="./dashboard.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img
+              src="../assets/overviewVec.png"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-yellow-500"
+          >
+            <img src="../assets/requestAct.png" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div class="fixed top-4 left-20 z-20 hamburger">
+        <button id="hamburgerButton" class="text-gray-800 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-64 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 py-2"
+        >
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="pb-1 text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-8 h-8 pb-1 rounded-full"
+          />
+          <span class="text-gray-600 pr-12">Adesola</span>
+        </div>
+
+        <!-- Welcome Message -->
+        <div
+          class="mt-10 pb-20 mb-6 flex justify-between items-center border-b"
+        >
+          <div>
+            <h1
+              class="text-lg text-bluewood-800 ml-10 md:text-l font-bold lg:text-l"
+            >
+              Create New Inspection
+            </h1>
+            <p class="text-bluewood-800 text-sm font-normal ml-10">
+              See inspections across all business classes
+            </p>
+          </div>
+          <div>
+            <a class="text-nowrap text-sm" href="./create_new_inspection.html">
+              <div class="flex justify-between items-center">
+                <span class="mr-2"
+                  ><img src="../assets/backVector.png" alt=""
+                /></span>
+                <span class="font-thin"> Back to create request </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-sm shadow">
+          <div class="mb-6 flex justify-between items-center">
+            <div>
+              <h1
+                class="text-bluewood-800 font-semibold ml-10 mb-4 md:text-l lg:text-l"
+              >
+                Post-Loss Inspection - Property
+              </h1>
+            </div>
+          </div>
+          <!-- Create New Inspection Form -->
+          <form>
+            <div
+              class="grid grid-cols-1 border-t ml-10 md:grid grid-cols-2 grid-rows-2 gap-4"
+            >
+              <!-- First Column -->
+              <div class="mt-4">
+                <label
+                  for="policyNumber"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Policy Number (optional)</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="policyNumber"
+                    class="w-full p-2 border rounded"
+                  />
+                  <img
+                    src="../assets/vectors/search.svg"
+                    alt="Search Icon"
+                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label
+                  for="insuredFor"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Insured for</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="insuredFor"
+                    class="w-full p-2 border rounded"
+                  />
+                  <img
+                    src="../assets/vectors/search.svg"
+                    alt="Search Icon"
+                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="assignedTo"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Assigned to</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="assignedTo"
+                    placeholder="Search a personnel"
+                    class="w-full p-2 border rounded pl-10"
+                  />
+                  <img
+                    src="../assets/vectors/search.svg"
+                    alt="Search Icon"
+                    class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 mt-4 mb-8 border-t ml-10 md:grid-cols-2 gap-4"
+            >
+              <div class="mt-8">
+                <label
+                  for="contactFirstName"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Contact First Name</label
+                >
+                <input
+                  type="text"
+                  id="contactFirstName"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div class="mt-8">
+                <label
+                  for="contactLastName"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Contact Last Name</label
+                >
+                <input
+                  type="text"
+                  id="contactLastName"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label
+                  for="contactPhoneNumber"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Contact Phone Number</label
+                >
+                <input
+                  type="text"
+                  id="contactPhoneNumber"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label
+                  for="contactEmailAddress"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >Contact Email Address</label
+                >
+                <input
+                  type="email"
+                  id="contactEmailAddress"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 mt-4 mb-8 border-t ml-10 md:grid-cols-2 gap-4"
+            >
+              <div>
+                <label
+                  for="riskHouseNumber"
+                  class="block text-bluewood-800 font-medium mt-10 mb-2"
+                  >Risk House Number</label
+                >
+                <input
+                  type="text"
+                  id="riskHouseNumber"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label
+                  for="riskAddress"
+                  class="block text-bluewood-800 font-medium mt-10 mb-2"
+                  >Risk Address</label
+                >
+                <input
+                  type="text"
+                  id="riskAddress"
+                  class="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label
+                  for="state"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >State</label
+                >
+                <select id="state" class="w-full p-2 border rounded">
+                  <option>Select a language</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="lga"
+                  class="block text-bluewood-800 font-medium mb-2"
+                  >LGA</label
+                >
+                <select id="lga" class="w-full p-2 border rounded">
+                  <option>Select a language</option>
+                </select>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 mt-4 mb-8 border-t ml-10 md:grid-cols-2 gap-4"
+            >
+              <div class="col-span-2 mt-4">
+                <label
+                  for="propertyDescription"
+                  class="block text-bluewood-800 font-medium mt-8 mb-2"
+                  >Property Description</label
+                >
+                <textarea
+                  id="propertyDescription"
+                  class="w-full p-2 border rounded"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+            <div class="form-separator"></div>
+            <div
+              class="mt-4 flex flex-col md:flex-row justify-between items-start md:items-center"
+            >
+              <div class="ml-10 mb-4 md:mb-0">
+                <span class="block text-yellow-600">Attach Document</span>
+              </div>
+              <button
+                type="submit"
+                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+              >
+                Generate
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("hamburgerButton")
+        .addEventListener("click", function () {
+          var secondSidebar = document.getElementById("secondSidebar");
+          if (secondSidebar.classList.contains("open")) {
+            secondSidebar.classList.remove("open");
+          } else {
+            secondSidebar.classList.add("open");
+          }
+        });
+    </script>
+  </body>
+</html>

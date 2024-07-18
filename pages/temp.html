@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspection List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      .selected {
+        background-color: #f8f7f7;
+      }
+
+      @media (max-width: 768px) {
+        .second-sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .second-sidebar.open {
+          transform: translateX(0);
+        }
+
+        .hamburger {
+          display: block;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .hamburger {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-white-100">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-16 md:left-16 lg:left-16 w-38 h-full bg-white shadow-md z-10 second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a
+            href="./dashboard.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img
+              src="../assets/vectors/Group 126.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div class="fixed top-4 left-20 z-20 hamburger">
+        <button id="hamburgerButton" class="text-gray-800 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-42 md:ml-44 lg:ml-60 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 py-2"
+        >
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="pb-1 text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-8 h-8 pb-1 rounded-full"
+          />
+          <span class="text-gray-600 pr-12">Adesola</span>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="mt-10 mb-6 flex justify-between items-center">
+          <div>
+            <h1 class="text-l ml-10 md:text-l font-bold lg: text-l font-bold">
+              Inspection List
+            </h1>
+            <p class="text-gray-600 ml-10">
+              See inspections across all business classes
+            </p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative hidden" id="searchBarContainer">
+              <input
+                id="replacementSearchBar"
+                type="text"
+                placeholder="Search"
+                class="px-2 py-1 border rounded pl-10"
+              />
+              <img
+                src="../assets/vectors/search.svg"
+                alt="Search Icon"
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+              />
+            </div>
+            <button
+              id="createNewInspectionBtn"
+              style="background-color: #ff7a00"
+              class="text-white px-2 py-1 rounded hover:bg-yellow-600 flex items-center mr-10"
+            >
+              <i class="fas fa-plus mr-2"></i>
+              Create New Inspection
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-sm shadow">
+          <!-- Filters -->
+          <div class="flex flex-col md:flex-row justify-between mb-2">
+            <div class="flex space-x-2 bg-gray-200 py-1 px-2 rounded">
+              <button
+                id="allRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                All Requests
+              </button>
+              <button
+                id="ongoingRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                Ongoing
+              </button>
+              <button
+                id="completedRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                Completed
+              </button>
+            </div>
+            <div class="flex flex-col md:flex-row space-x-2 mt-2 md:mt-0">
+              <div class="relative">
+                <input
+                  id="tableSearchBar"
+                  type="text"
+                  placeholder="Search"
+                  class="px-4 py-2 border rounded pl-10"
+                />
+                <img
+                  src="../assets/vectors/search.svg"
+                  alt="Search Icon"
+                  class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                />
+              </div>
+              <select class="px-2 py-1 border rounded mb-2">
+                <option>Marine</option>
+                <option>Property</option>
+              </select>
+              <select class="px-2 py-1 border rounded">
+                <option>
+                  <span class="text-gray-200">Sort by:</span> Class
+                </option>
+                <option>
+                  <span class="text-gray-200">Sort by:</span> Date
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Inspection Table -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border">
+              <thead>
+                <tr class="w-full text-left">
+                  <th class="py-1 px-2">ID</th>
+                  <th class="py-1 px-2">Date</th>
+                  <th class="py-1 px-2">Name</th>
+                  <th class="py-1 px-2">Inspection Method</th>
+                  <th class="py-1 px-2">Officer</th>
+                  <th class="py-1 px-2">Status</th>
+                </tr>
+              </thead>
+              <tbody id="inspectionTableBody">
+                <!-- All Requests (Default) -->
+                <tr class="all-requests">
+                  <td class="border-t py- px-4">10321</td>
+                  <td class="border-t py-2 px-4">15/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+                <tr class="all-requests">
+                  <td class="border-t py-2 px-4">10321</td>
+                  <td class="border-t py-2 px-4">12/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoprite Stores</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+
+                <!-- Ongoing Requests -->
+                <tr class="ongoing-requests hidden">
+                  <td class="border-t py-2 px-4">10322</td>
+                  <td class="border-t py-2 px-4">20/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoprite Stores</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+                <tr class="ongoing-requests hidden">
+                  <td class="border-t py-2 px-4">10323</td>
+                  <td class="border-t py-2 px-4">22/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+
+                <!-- Completed Requests -->
+                <tr class="completed-requests hidden">
+                  <td class="border-t py-2 px-4">10324</td>
+                  <td class="border-t py-2 px-4">25/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+                <tr class="completed-requests hidden">
+                  <td class="border-t py-2 px-4">10325</td>
+                  <td class="border-t py-2 px-4">27/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoperite</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("allRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("all-requests");
+          setSelectedButton(this);
+          toggleSearchBar(false);
+        });
+
+      document
+        .getElementById("ongoingRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("ongoing-requests");
+          setSelectedButton(this);
+          toggleSearchBar(true);
+        });
+
+      document
+        .getElementById("completedRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("completed-requests");
+          setSelectedButton(this);
+          toggleSearchBar(true);
+        });
+
+      function filterTable(filterClass) {
+        const allRows = document.querySelectorAll("#inspectionTableBody tr");
+        allRows.forEach((row) => {
+          if (row.classList.contains(filterClass)) {
+            row.classList.remove("hidden");
+          } else {
+            row.classList.add("hidden");
+          }
+        });
+      }
+
+      function setSelectedButton(button) {
+        const buttons = document.querySelectorAll(".bg-gray-200 button");
+        buttons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+      }
+
+      function toggleSearchBar(show) {
+        const createNewBtn = document.getElementById("createNewInspectionBtn");
+        const searchBarContainer =
+          document.getElementById("searchBarContainer");
+        const replacementSearchBar = document.getElementById(
+          "replacementSearchBar"
+        );
+        const tableSearchBar = document.getElementById("tableSearchBar");
+
+        if (show) {
+          createNewBtn.classList.add("hidden");
+          replacementSearchBar.classList.remove("hidden");
+          searchBarContainer.classList.remove("hidden");
+          tableSearchBar.classList.add("hidden");
+        } else {
+          createNewBtn.classList.remove("hidden");
+          replacementSearchBar.classList.add("hidden");
+          searchBarContainer.classList.add("hidden");
+          tableSearchBar.classList.remove("hidden");
+        }
+      }
+      document
+        .getElementById("createNewInspectionBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = "create_new_inspection.html";
+        });
+      document
+        .getElementById("hamburgerButton")
+        .addEventListener("click", function () {
+          const sidebar = document.getElementById("secondSidebar");
+          sidebar.classList.toggle("open");
+        });
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspection List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+
+      .font-mulish {
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .text-bluewood-800 {
+        color: #34475e;
+      }
+      .hidden {
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+
+      .selected {
+        background-color: #f8f7f7;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white-100">
+    <div class="flex h-screen">
+      <!-- First Sidebar -->
+      <div
+        id="firstSidebar"
+        class="fixed top-0 left-0 w-8 h-full lg:w-16 bg-gray-800 z-10"
+      >
+        <nav
+          class="flex flex-col items-center h-full space-y-4 text-white"
+          style="padding-top: 115px"
+        >
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/group100.svg"
+              alt="Overview"
+              class="mb-3"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/calender.png"
+              alt="calender"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Dribbble Light Preview.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 5.svg"
+              alt="Overview"
+              class="mb-3 w-4 md:w-4 lg:w-6"
+            />
+          </a>
+          <a href="#" class="hover:text-yellow-500">
+            <img
+              src="../assets/vectors/Layer 2.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+          </a>
+        </nav>
+      </div>
+
+      <!-- Second Sidebar -->
+      <div
+        id="secondSidebar"
+        class="fixed top-0 left-8 w-32 lg:left-16 w-38 h-full bg-white shadow-md z-10 second-sidebar"
+      >
+        <div class="p-4">
+          <img
+            src="../assets/logo1.png"
+            alt="Logo"
+            class="object-contain w-18 h-12 my-4"
+          />
+        </div>
+        <nav class="flex flex-col space-y-4 py-1 px-4">
+          <h2>TRM</h2>
+          <a
+            href="./dashboard.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img
+              src="../assets/vectors/Group 126.svg"
+              alt="Overview"
+              class="w-4 md:w-4 lg:w-6"
+            />
+            <span class="ml-1 md:ml-2 lg:ml-2">Overview</span>
+          </a>
+          <a
+            href="inspection_page.html"
+            class="flex items-center text-gray-700 hover:text-yellow-500"
+          >
+            <img src="../assets/vectors/group127.svg" alt="request" />
+            <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 ml-42 md:ml-44 lg:ml-60 p-6">
+        <!-- Header -->
+        <div
+          class="flex justify-end items-center mb-10 border-b border-gray-300 space-x-4 fixed top-0 left-64 right-0 bg-white z-20 py-2"
+        >
+          <!-- Hamburger Menu -->
+          <div class="fixed top-4 left-8 z-20 hamburger lg:hidden">
+            <button
+              id="hamburgerButton"
+              class="text-gray-800 focus:outline-none"
+            >
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+
+          <img
+            src="../assets/vectors/notif.svg"
+            alt="notif"
+            class="pb-1 text-gray-600 text-xl"
+          />
+          <img
+            src="../assets/vectors/Group 38.jpg"
+            alt="Profile"
+            class="w-8 h-8 pb-1 rounded-full"
+          />
+          <span class="text-gray-600 pr-12">Adesola</span>
+        </div>
+
+        <!-- Welcome Message -->
+        <div
+          class="mt-10 left-0 max-w-full flex justify-between items-center shrink lg:mb-6"
+        >
+          <div>
+            <h1 class="text-l ml-4 md:text-l font-bold lg:text-l lg:ml-10">
+              Inspection List
+            </h1>
+            <p class="text-gray-600 ml-4 lg:ml-10">
+              See inspections across all business classes
+            </p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="relative hidden" id="searchBarContainer">
+              <input
+                id="replacementSearchBar"
+                type="text"
+                placeholder="Search"
+                class="px-2 py-1 border rounded pl-10"
+              />
+              <img
+                src="../assets/vectors/search.svg"
+                alt="Search Icon"
+                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+              />
+            </div>
+            <button
+              id="createNewInspectionBtn"
+              style="background-color: #ff7a00"
+              class="text-white px-2 py-1 rounded hover:bg-yellow-600 flex items-center mr-10"
+            >
+              <i class="fas fa-plus mr-2"></i>
+              Create New Inspection
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-sm shadow">
+          <!-- Filters -->
+          <div class="flex flex-col md:flex-row justify-between mb-2">
+            <div class="flex space-x-2 bg-gray-200 py-1 px-2 rounded">
+              <button
+                id="allRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                All Requests
+              </button>
+              <button
+                id="ongoingRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                Ongoing
+              </button>
+              <button
+                id="completedRequestsBtn"
+                class="px-2 py-1 text-gray-700 rounded hover:bg-gray-100"
+              >
+                Completed
+              </button>
+            </div>
+            <div class="flex flex-col md:flex-row space-x-2 mt-2 md:mt-0">
+              <div class="relative">
+                <input
+                  id="tableSearchBar"
+                  type="text"
+                  placeholder="Search"
+                  class="px-4 py-2 border rounded pl-10"
+                />
+                <img
+                  src="../assets/vectors/search.svg"
+                  alt="Search Icon"
+                  class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                />
+              </div>
+              <select class="px-2 py-1 border rounded mb-2">
+                <option>Marine</option>
+                <option>Property</option>
+              </select>
+              <select class="px-2 py-1 border rounded">
+                <option>
+                  <span class="text-gray-200">Sort by:</span> Class
+                </option>
+                <option>
+                  <span class="text-gray-200">Sort by:</span> Date
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Inspection Table -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border">
+              <thead>
+                <tr class="w-full text-left">
+                  <th class="py-1 px-2">ID</th>
+                  <th class="py-1 px-2">Date</th>
+                  <th class="py-1 px-2">Name</th>
+                  <th class="py-1 px-2">Inspection Method</th>
+                  <th class="py-1 px-2">Officer</th>
+                  <th class="py-1 px-2">Status</th>
+                </tr>
+              </thead>
+              <tbody id="inspectionTableBody">
+                <!-- All Requests (Default) -->
+                <tr class="all-requests">
+                  <td class="border-t py- px-4">10321</td>
+                  <td class="border-t py-2 px-4">15/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+                <tr class="all-requests">
+                  <td class="border-t py-2 px-4">10321</td>
+                  <td class="border-t py-2 px-4">12/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoprite Stores</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+
+                <!-- Ongoing Requests -->
+                <tr class="ongoing-requests hidden">
+                  <td class="border-t py-2 px-4">10322</td>
+                  <td class="border-t py-2 px-4">20/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoprite Stores</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+                <tr class="ongoing-requests hidden">
+                  <td class="border-t py-2 px-4">10323</td>
+                  <td class="border-t py-2 px-4">22/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-yellow-100 text-yellow-700 py-1 px-3 rounded-full text-xs"
+                      >Ongoing</span
+                    >
+                  </td>
+                </tr>
+
+                <!-- Completed Requests -->
+                <tr class="completed-requests hidden">
+                  <td class="border-t py-2 px-4">10324</td>
+                  <td class="border-t py-2 px-4">25/06/2023</td>
+                  <td class="border-t py-2 px-4">Rovenheights properties</td>
+                  <td class="border-t py-2 px-4">Digital</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+                <tr class="completed-requests hidden">
+                  <td class="border-t py-2 px-4">10325</td>
+                  <td class="border-t py-2 px-4">27/06/2023</td>
+                  <td class="border-t py-2 px-4">Shoperite</td>
+                  <td class="border-t py-2 px-4">Manual</td>
+                  <td class="border-t py-2 px-4">Mustapha Onasanya</td>
+                  <td class="border-t py-2 px-4">
+                    <span
+                      class="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs"
+                      >Completed</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("allRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("all-requests");
+          setSelectedButton(this);
+          toggleSearchBar(false);
+        });
+
+      document
+        .getElementById("ongoingRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("ongoing-requests");
+          setSelectedButton(this);
+          toggleSearchBar(true);
+        });
+
+      document
+        .getElementById("completedRequestsBtn")
+        .addEventListener("click", function () {
+          filterTable("completed-requests");
+          setSelectedButton(this);
+          toggleSearchBar(true);
+        });
+
+      function filterTable(filterClass) {
+        const allRows = document.querySelectorAll("#inspectionTableBody tr");
+        allRows.forEach((row) => {
+          if (row.classList.contains(filterClass)) {
+            row.classList.remove("hidden");
+          } else {
+            row.classList.add("hidden");
+          }
+        });
+      }
+
+      function setSelectedButton(button) {
+        const buttons = document.querySelectorAll(".bg-gray-200 button");
+        buttons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+      }
+
+      function toggleSearchBar(show) {
+        const createNewBtn = document.getElementById("createNewInspectionBtn");
+        const searchBarContainer =
+          document.getElementById("searchBarContainer");
+        const replacementSearchBar = document.getElementById(
+          "replacementSearchBar"
+        );
+        const tableSearchBar = document.getElementById("tableSearchBar");
+
+        if (show) {
+          createNewBtn.classList.add("hidden");
+          replacementSearchBar.classList.remove("hidden");
+          searchBarContainer.classList.remove("hidden");
+          tableSearchBar.classList.add("hidden");
+        } else {
+          createNewBtn.classList.remove("hidden");
+          replacementSearchBar.classList.add("hidden");
+          searchBarContainer.classList.add("hidden");
+          tableSearchBar.classList.remove("hidden");
+        }
+      }
+      document
+        .getElementById("createNewInspectionBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = "create_new_inspection.html";
+        });
+
+      function toggleHamburger(hamburger) {
+        const seconSidebar = document.getElementById("secondSidebar");
+        const firstSidebar = document.getElementById("firstSidebar");
+        const isHidden = firstSidebar.classList.contains("hidden");
+
+        if (isHidden) {
+          firstSidebar.classList.remove("hidden");
+          seconSidebar.classList.remove("hidden");
+        } else {
+          firstSidebar.classList.add("hidden");
+          seconSidebar.classList.add("hidden");
+        }
+      }
+      document
+        .getElementById("hamburgerButton")
+        .addEventListener("click", function () {
+          toggleHamburger(this);
+        });
+    </script>
+  </body>
+</html>
