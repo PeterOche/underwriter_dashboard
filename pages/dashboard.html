@@ -110,11 +110,11 @@
             />
           </a>
 
-          <a href="#" class="hover:text-[#FF7A00] bg-white px-4 py-1">
+          <a href="#" class="bg-white px-4 py-1 hover:text-yellow-500">
             <img
               src="../assets/vectors/calender.png"
               alt="calender"
-              class="self-center mb-3 w-4 md:w-4 lg:w-6"
+              class="mb-1 w-4 md:w-4 lg:w-6"
             />
           </a>
           <a href="#" class="hover:text-[#FF7A00]">
@@ -217,7 +217,10 @@
                 Take a look at your dashboard and see all pending tasks
               </p>
             </div>
-            <button class="bg-[#FF7A00] text-white h-9 rounded-sm p-1 px-3">
+            <button
+              id="createNewInspectionBtn"
+              class="bg-[#FF7A00] text-white h-9 rounded-sm p-1 px-3"
+            >
               <i class="fas fa-plus mr-2"></i> Create New Inspection
             </button>
           </div>
@@ -504,7 +507,7 @@
                         data-label="Status"
                       >
                         <span
-                          class="bg-green-100 text-green-500 py-1 px-3 rounded"
+                          class="bg-[#ECFDF3] text-[#027A48] py-1 px-3 rounded"
                           >Completed</span
                         >
                       </td>
@@ -586,7 +589,7 @@
                         data-label="Status"
                       >
                         <span
-                          class="bg-green-100 text-green-500 font-semibold py-1 px-3 rounded"
+                          class="bg-[#ECFDF3] text-[#027A48] font-semibold py-1 px-3 rounded"
                           >Completed</span
                         >
                       </td>
@@ -706,6 +709,12 @@
             firstSidebar.classList.add("hidden");
             secondSidebar.classList.add("hidden");
           }
+        });
+      document
+        .getElementById("createNewInspectionBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = "create_new_inspection.html";
         });
     </script>
   </body>
