@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inspection List</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -216,22 +214,24 @@
             <div class="bg-white p-4 rounded-sm">
               <!-- Filters -->
               <div class="flex flex-col md:flex-row justify-between mb-2">
-                <div class="flex space-x-2 bg-gray-200 py-1 px-1 w-fit rounded">
+                <div
+                  class="flex justify-around bg-gray-200 py-1 px-1 w-fit rounded"
+                >
                   <button
                     id="allRequestsBtn"
-                    class="px-2 py-1 text-gray-700 rounded hover:bg-white"
+                    class="text-xs md:text-lg px-2 py-1 text-gray-700 rounded hover:bg-white"
                   >
                     All Requests
                   </button>
                   <button
                     id="ongoingRequestsBtn"
-                    class="px-2 py-1 text-gray-700 rounded hover:bg-white"
+                    class="text-xs md:text-lg px-2 py-1 text-gray-700 rounded hover:bg-white"
                   >
                     Ongoing
                   </button>
                   <button
                     id="completedRequestsBtn"
-                    class="px-2 py-1 text-gray-700 rounded hover:bg-white"
+                    class="text-xs md:text-lg px-2 py-1 text-gray-700 rounded hover:bg-white"
                   >
                     Completed
                   </button>
@@ -251,13 +251,13 @@
                     />
                   </div>
                   <div
-                    class="flex items-center justify-between bg-gray-200 p-2 border border-gray-300 rounded mb-2"
+                    class="flex items-center justify-around space-x-2 bg-gray-200 p-2 border border-gray-300 rounded mb-2"
                   >
-                    <span class="flex items-center mr-2">
+                    <span class="">
                       <img src="../assets/vectors/dot.png" alt="dot" />
                     </span>
-                    <span class="flex-1 text-center">Marine</span>
-                    <span class="flex items-center ml-2">
+                    <span class="text-center">Marine</span>
+                    <span class="">
                       <img src="../assets/vectors/x.png" alt="close" />
                     </span>
                   </div>

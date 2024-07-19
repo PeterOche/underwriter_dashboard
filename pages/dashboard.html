@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -99,13 +96,13 @@
       <!-- First Sidebar -->
       <div
         id="firstSidebar"
-        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-gray-800 z-10 hidden lg:block"
+        class="fixed top-0 left-0 w-12 md:w-16 lg:w-16 h-full bg-[#2F2F2F] z-10 hidden lg:block"
       >
         <nav
           class="flex flex-col items-center h-full space-y-4 text-white"
           style="padding-top: 115px"
         >
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00]">
             <img
               src="../assets/vectors/group100.svg"
               alt="Overview"
@@ -113,31 +110,31 @@
             />
           </a>
 
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00] bg-white px-4 py-1">
             <img
               src="../assets/vectors/calender.png"
               alt="calender"
-              class="mb-3 w-4 md:w-4 lg:w-6"
+              class="self-center mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00]">
             <img src="../assets/vectors/camera.png" alt="camera" class="mb-3" />
           </a>
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00]">
             <img
               src="../assets/vectors/Dribbble Light Preview.svg"
               alt="Overview"
               class="mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00]">
             <img
               src="../assets/vectors/Layer 5.svg"
               alt="Overview"
               class="mb-3 w-4 md:w-4 lg:w-6"
             />
           </a>
-          <a href="#" class="hover:text-yellow-500">
+          <a href="#" class="hover:text-[#FF7A00]">
             <img
               src="../assets/vectors/Layer 2.svg"
               alt="Overview"
@@ -161,7 +158,7 @@
         </div>
         <nav class="flex flex-col space-y-4 py-1 px-4">
           <h2>TRM</h2>
-          <a href="./dashboard.html" class="flex items-center text-yellow-500">
+          <a href="./dashboard.html" class="flex items-center text-[#FF7A00]">
             <img
               src="../assets/vectors/Group 126.svg"
               alt="Overview"
@@ -171,7 +168,7 @@
           </a>
           <a
             href="inspection_page.html"
-            class="flex items-center text-gray-700 hover:text-yellow-500"
+            class="flex items-center text-gray-700 hover:text-[#FF7A00]"
           >
             <img src="../assets/vectors/group127.svg" alt="request" />
             <span class="ml-1 md:ml-2 lg:ml-2">Requests</span>
@@ -237,7 +234,7 @@
               >
                 <!-- Card 1 -->
                 <div
-                  class="relative w-full h-40 bg-blue-400 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                  class="relative w-full h-40 bg-[#4A8DFF] text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
                 >
                   <!-- ellipse -->
                   <div
@@ -263,7 +260,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div
-                  class="relative w-full h-40 bg-green-500 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                  class="relative w-full h-40 bg-[#00B388] text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
                 >
                   <!-- ellipse -->
                   <div
@@ -287,14 +284,14 @@
                 </div>
                 <!-- Card 3 -->
                 <div
-                  class="relative w-full h-40 bg-yellow-300 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                  class="relative w-full h-40 bg-[#FDC75B] text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
                 >
                   <!-- ellipse -->
                   <div
-                    class="absolute bottom-0 left-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-yellow-500 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
                   ></div>
                   <div
-                    class="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                    class="absolute top-0 right-0 w-32 h-32 bg-yellow-500 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
                   ></div>
 
                   <div class="flex flex-col justify-between">
@@ -313,14 +310,14 @@
                 </div>
                 <!-- Card 4 -->
                 <div
-                  class="relative w-full h-40 bg-red-700 text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
+                  class="relative w-full h-40 bg-[#E30000] text-white p-2 rounded-lg flex justify-between flex-grow flex-shrink overflow-hidden"
                 >
                   <!-- ellipse -->
                   <div
-                    class="absolute bottom-0 left-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
+                    class="absolute bottom-0 left-0 w-32 h-32 bg-red-700 rounded-semi opacity-50 transform -translate-x-1/2 translate-y-1/2"
                   ></div>
                   <div
-                    class="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
+                    class="absolute top-0 right-0 w-32 h-32 bg-red-700 rounded-semi opacity-50 transform translate-x-1/2 -translate-y-1/2"
                   ></div>
 
                   <div class="flex flex-col justify-between">
@@ -356,7 +353,7 @@
                     >
                     <a
                       href="#"
-                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      class="text-[#FF7A00] hover:underline whitespace-nowrap"
                       >Set reminder</a
                     >
                   </li>
@@ -369,7 +366,7 @@
                     >
                     <a
                       href="#"
-                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      class="text-[#FF7A00] hover:underline whitespace-nowrap"
                       >See inspection</a
                     >
                   </li>
@@ -382,7 +379,7 @@
                     >
                     <a
                       href="#"
-                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      class="text-[#FF7A00] hover:underline whitespace-nowrap"
                       >Re-schedule now</a
                     >
                   </li>
@@ -395,7 +392,7 @@
                     >
                     <a
                       href="#"
-                      class="text-yellow-500 hover:underline whitespace-nowrap"
+                      class="text-[#FF7A00] hover:underline whitespace-nowrap"
                       >See inspection</a
                     >
                   </li>
@@ -544,11 +541,11 @@
                         Mustapha Onasanya
                       </td>
                       <td
-                        class="border-t py-2 px-4 text-sm font-semibold text-yellow-500"
+                        class="border-t py-2 px-4 text-sm font-semibold text-[#FF7A00]"
                         data-label="Status"
                       >
                         <span
-                          class="bg-yellow-200 text-yellow-500 font-semibold py-1 px-3 rounded"
+                          class="bg-[#FFDEBF] text-[#FF7A00] font-semibold py-1 px-3 rounded"
                           >Ongoing</span
                         >
                       </td>
@@ -630,7 +627,7 @@
                         data-label="Status"
                       >
                         <span
-                          class="bg-yellow-200 text-yellow-500 py-1 px-3 rounded"
+                          class="bg-[#FFDEBF] text-[#FF7A00] py-1 px-3 rounded"
                           >Ongoing</span
                         >
                       </td>
@@ -640,7 +637,10 @@
                       <td class="border-t py-2 px-4" data-label="Name">
                         Redes Microfinance
                       </td>
-                      <td class="border-t py-6 px-4 flex" data-label="Class">
+                      <td
+                        class="border-t py-6 px-4 flex lg:py-2"
+                        data-label="Class"
+                      >
                         <span class="emoji">🔴</span> Engineering
                       </td>
                       <td
