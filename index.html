@@ -61,64 +61,70 @@
         <div
           class="md:w-full lg:w-1/2 flex flex-col justify-center md:self-center px-4 lg:px-12"
         >
-          <img src="./assets/logo2.png" alt="Logo" class="w-28 lg:h-36 mb-6" />
-          <h1 class="font-mulish font-bold text-4xl mb-2 text-[#585858]">
-            Underwriter Dashboard
-          </h1>
-          <p class="font-mulish text-[#AFB0B1] mb-10">
-            Welcome. Login to your portal account.
-          </p>
-          <form id="loginForm">
-            <div class="relative mb-6">
-              <label
-                for="loginID"
-                class="absolute top-0 left-2 px-2 py-1 font-semibold text-sm text-[#000000]"
-                >Login ID</label
-              >
-              <input
-                type="text"
-                id="loginID"
-                placeholder="Enter your login ID"
-                class="w-full left-3 p-4 pt-6 bg-white rounded shadow"
-              />
-              <i
-                class="fas fa-user absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400"
-              ></i>
-            </div>
-            <div class="relative mb-6">
-              <label
-                for="password"
-                class="absolute top-0 left-2 px-2 py-1 font-semibold text-sm text-[#000000]"
-                >Password</label
-              >
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                class="w-full p-4 pt-6 bg-white rounded shadow"
-              />
-              <span
-                class="show-password absolute top-2 transform -translate-y-1/2 right-5 text-[#EE5331] cursor-pointer text-sm"
-                onclick="togglePassword()"
-                >Show</span
-              >
-              <i
-                class="fas fa-lock absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400"
-              ></i>
-            </div>
-            <div class="flex justify-between items-center mb-6">
-              <label class="flex items-center">
-                <!-- <input type="checkbox" class="form-checkbox" /> -->
-                <span class="ml-2 text-sm text-[#7F8B94]"
-                  >Keep me logged in</span
+          <div class="lg:max-w-[900px] lg:mx-auto">
+            <img
+              src="./assets/logo2.png"
+              alt="Logo"
+              class="w-28 lg:h-36 mb-6"
+            />
+            <h1 class="font-mulish font-bold text-4xl mb-2 text-[#585858]">
+              Underwriter Dashboard
+            </h1>
+            <p class="font-mulish text-[#AFB0B1] mb-10">
+              Welcome. Login to your portal account.
+            </p>
+            <form id="loginForm">
+              <div class="relative mb-6">
+                <label
+                  for="loginID"
+                  class="absolute top-0 left-2 px-2 py-1 font-semibold text-sm text-[#000000]"
+                  >Login ID</label
                 >
-              </label>
-              <a href="#" class="text-sm text-[#7F8B94] hover:underline"
-                >Reset Password</a
-              >
-            </div>
-            <button type="submit" class="button">Login</button>
-          </form>
+                <input
+                  type="text"
+                  id="loginID"
+                  placeholder="Enter your login ID"
+                  class="w-full left-3 p-4 pt-6 bg-white rounded shadow"
+                />
+                <i
+                  class="fas fa-user absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400"
+                ></i>
+              </div>
+              <div class="relative mb-6">
+                <label
+                  for="password"
+                  class="absolute top-0 left-2 px-2 py-1 font-semibold text-sm text-[#000000]"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  class="w-full p-4 pt-6 bg-white rounded shadow"
+                />
+                <span
+                  class="show-password absolute top-2 transform -translate-y-1/2 right-4 text-[#EE5331] cursor-pointer text-xs md:text-sm"
+                  onclick="togglePassword()"
+                  >Show</span
+                >
+                <i
+                  class="fas fa-lock absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400"
+                ></i>
+              </div>
+              <div class="flex justify-between items-center mb-6">
+                <label class="flex items-center">
+                  <!-- <input type="checkbox" class="form-checkbox" /> -->
+                  <span class="ml-2 text-sm text-[#7F8B94]"
+                    >Keep me logged in</span
+                  >
+                </label>
+                <a href="#" class="text-sm text-[#7F8B94] hover:underline"
+                  >Reset Password</a
+                >
+              </div>
+              <button type="submit" class="button">Login</button>
+            </form>
+          </div>
         </div>
         <div
           class="hide-on-small lg:h-screen lg:w-1/2 relative bg-cover bg-center"
