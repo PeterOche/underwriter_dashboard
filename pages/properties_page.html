@@ -282,7 +282,7 @@
                     class="md:ml-10 mr-0 border-l-8 border-[#FF7A00] bg-white shadow hover:shadow-lg rounded-lg p-4 mb-4"
                   >
                     <div
-                      class="flex items-center bg-white rounded-lg flex-grow"
+                      class="flex flex-col md:flex-row items-center bg-white rounded-lg md:p-4"
                     >
                       <div class="flex flex-col justify-between h-full mr-4">
                         <img
@@ -296,7 +296,7 @@
                           class="w-3 h-3 mt-4 self-center"
                         />
                       </div>
-                      <div class="flex flex-col flex-grow">
+                      <div class="flex flex-col flex-grow mb-4 md:mb-0">
                         <span
                           id="responsiveText"
                           class="text-xs w-1/2 md:w-auto md:text-sm whitespace-nowrap"
@@ -336,7 +336,9 @@
                   <div
                     class="mr-4 border-l-8 border-[#737373] bg-white shadow hover:shadow-lg rounded-lg p-4"
                   >
-                    <div class="flex items-center bg-white rounded-lg">
+                    <div
+                      class="flex flex-col md:flex-row items-center bg-white rounded-lg md:p-4"
+                    >
                       <div class="flex flex-col justify-between h-full mr-4">
                         <img
                           src="../assets/vectors/note.svg"
@@ -349,10 +351,10 @@
                           class="w-3 h-3 mt-4 self-center"
                         />
                       </div>
-                      <div class="flex flex-col flex-grow">
-                        <span class="text-sm whitespace-nowrap">
-                          Request Assigned
-                        </span>
+                      <div class="flex flex-col flex-grow mb-4 md:mb-0">
+                        <span class="text-sm whitespace-nowrap"
+                          >Request Assigned</span
+                        >
                         <span class="text-xs text-[#FF7A00]"
                           >Leadway Assurance</span
                         >
@@ -360,7 +362,7 @@
                           >Assigned to Engineer Olaniyi</span
                         >
                       </div>
-                      <div>
+                      <div class="md:ml-4">
                         <button
                           class="whitespace-nowrap bg-[#D4D4D4] text-gray-600 px-4 py-2 rounded"
                         >
